@@ -122,10 +122,8 @@
   }
   .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px -18px rgba(21,32,43,.4);border-color:#C2C9CF}
   .card.featured{grid-column:1 / -1}
-  @media(min-width:761px){
-    .card.featured{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
-    .card.featured .shot{height:100%;min-height:300px}
-  }
+  .card.featured .shot{aspect-ratio:12 / 5}
+  @media(max-width:760px){.card.featured .shot{aspect-ratio:16 / 10}}
 
   /* screenshot area (replace with <img> — see comments below) */
   .shot{
@@ -235,7 +233,7 @@
       <!-- ===== PROYECTO DESTACADO: Festival ===== -->
       <article class="card featured reveal">
         <div class="shot">
-          <img src="img/festival.png" alt="Festival de las Luciérnagas">
+          <img src="img/festival.png" alt="Festival de las Luciérnagas — mapa interactivo">
         </div>
         <div class="card-body">
           <p class="card-tag">Destacado · Proyecto en equipo</p>
