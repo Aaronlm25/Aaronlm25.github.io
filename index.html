@@ -150,6 +150,10 @@
     text-align:center;
   }
   .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  /* variante: imagen completa sin recortar (para capturas verticales/chat) */
+  .shot.shot-contain{aspect-ratio:4 / 3;background:#1b2330}
+  .shot.shot-contain img{object-fit:contain}
+  @media(max-width:760px){.shot.shot-contain{aspect-ratio:4 / 3}}
 
   .card-body{padding:26px 26px 24px;display:flex;flex-direction:column;flex:1}
   .card-tag{font-family:var(--mono);font-size:.74rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
@@ -261,11 +265,11 @@
           <p class="desc">Asistente de IA que corre 100% en local (sin internet ni APIs de pago) y automatiza tareas por lenguaje natural mediante function calling: crea proyectos, notas y eventos de calendario. Incluye interfaz de chat, entrada/salida por voz, visión y análisis de datos. Seguro por diseño: solo escribe dentro de su carpeta de trabajo.</p>
           <div class="stack"><span>Ollama</span><span>Qwen 2.5</span><span>Python</span><span>Vosk</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/mi-agente-ia" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener">Ver código ↗</a>
           </div>
         </div>
       </article>
-      
+
       <!-- ===== Bloc de notas ===== -->
       <article class="card reveal">
         <div class="shot">
