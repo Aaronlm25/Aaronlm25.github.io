@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron López Mendoza — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ECEEF0;
+    --card:#FFFFFF;
+    --ink:#15202B;
+    --muted:#5A6672;
+    --accent:#0F766E;
+    --accent-soft:rgba(15,118,110,.10);
+    --line:#D7DCE0;
+    --display:"Space Grotesk",sans-serif;
+    --body:"IBM Plex Sans",sans-serif;
+    --mono:"IBM Plex Mono",monospace;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* eyebrow / mono labels */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.04em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(236,238,240,.82);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .nav-name{font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:-.01em}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links .pill{
+    font-family:var(--mono);font-size:.8rem;
+    border:1px solid var(--ink);border-radius:2px;
+    padding:6px 12px;color:var(--ink);transition:.2s;
+  }
+  .nav-links .pill:hover{background:var(--ink);color:var(--paper)}
+  @media(max-width:640px){.nav-links a:not(.pill){display:none}}
+
+  /* ---------- Hero ---------- */
+  header.hero{
+    position:relative;
+    padding:92px 0 76px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  /* blueprint grid backdrop */
+  header.hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px,transparent 1px),
+      linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:46px 46px;
+    opacity:.35;
+    -webkit-mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000,transparent 75%);
+            mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000,transparent 75%);
+  }
+  .hero-content{position:relative;max-width:760px}
+  h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2.5rem,6vw,4.3rem);
+    line-height:1.02;
+    letter-spacing:-.025em;
+    margin-bottom:22px;
+  }
+  h1 .accent{color:var(--accent)}
+  .lede{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);max-width:580px;margin-bottom:34px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    font-family:var(--mono);font-size:.88rem;
+    padding:12px 20px;border-radius:2px;transition:.2s;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-solid{background:var(--ink);color:var(--paper)}
+  .btn-solid:hover{background:var(--accent)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:var(--card)}
+  .btn-ghost:hover{border-color:var(--ink)}
+
+  /* ---------- Section frame ---------- */
+  section{padding:78px 0;border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:42px}
+  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.2rem);letter-spacing:-.02em}
+  .sec-head p{color:var(--muted);margin-top:8px;max-width:560px}
+
+  /* ---------- Projects ---------- */
+  .grid{display:grid;gap:26px;grid-template-columns:repeat(2,1fr)}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    display:flex;flex-direction:column;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px -18px rgba(21,32,43,.4);border-color:#C2C9CF}
+  .card.featured{grid-column:1 / -1}
+  @media(min-width:761px){
+    .card.featured{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
+    .card.featured .shot{height:100%;min-height:300px}
+  }
+
+  /* screenshot area (replace with <img> — see comments below) */
+  .shot{
+    position:relative;
+    aspect-ratio:16/10;
+    background:
+      linear-gradient(135deg,#13413c,#0F766E 60%,#16A394);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+  }
+  .shot::after{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+    background-size:30px 30px;
+  }
+  .shot span{
+    position:relative;z-index:1;
+    font-family:var(--mono);font-size:.78rem;
+    color:rgba(255,255,255,.85);
+    border:1px dashed rgba(255,255,255,.5);
+    padding:8px 14px;border-radius:3px;
+    text-align:center;
+  }
+  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+
+  .card-body{padding:26px 26px 24px;display:flex;flex-direction:column;flex:1}
+  .card-tag{font-family:var(--mono);font-size:.74rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.32rem;letter-spacing:-.01em;margin-bottom:10px}
+  .card p.desc{color:var(--muted);font-size:.96rem;margin-bottom:18px;flex:1}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+  .stack span{
+    font-family:var(--mono);font-size:.72rem;
+    background:var(--accent-soft);color:var(--accent);
+    padding:4px 9px;border-radius:3px;
+  }
+  .card-links{display:flex;gap:18px;font-family:var(--mono);font-size:.84rem}
+  .card-links a{color:var(--ink);border-bottom:1px solid transparent;transition:.2s;padding-bottom:2px}
+  .card-links a:hover{border-color:var(--accent);color:var(--accent)}
+  .card-links a.muted{color:var(--muted)}
+
+  /* ---------- Skills ---------- */
+  .skills{display:grid;gap:22px;grid-template-columns:repeat(2,1fr)}
+  @media(max-width:640px){.skills{grid-template-columns:1fr}}
+  .skill-row{border-top:1px solid var(--line);padding-top:16px}
+  .skill-row h4{font-family:var(--mono);font-size:.82rem;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}
+  .skill-row p{font-size:.98rem}
+
+  /* ---------- Contact ---------- */
+  .contact-inner{max-width:620px}
+  .contact-inner h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em;margin-bottom:16px}
+  .contact-inner p{color:var(--muted);margin-bottom:28px}
+  footer{padding:34px 0;color:var(--muted);font-family:var(--mono);font-size:.8rem}
+  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+    .card:hover{transform:none}
+  }
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <span class="nav-name">Aaron López</span>
+    <div class="nav-links">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#contacto">Contacto</a>
+      <a class="pill" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-content">
+    <p class="eyebrow">// Portafolio</p>
+    <h1>Construyo software<br><span class="accent">full-stack y sistemas</span></h1>
+    <p class="lede">Estudiante de Ciencias de la Computación en la UNAM. Desarrollo web, bases de datos e inteligencia artificial local, con foco en seguridad y buenas prácticas.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
+      <!-- Para el CV: sube tu PDF al repo (ej. cv.pdf) y deja el href como abajo -->
+      <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">Descargar CV</a>
+    </div>
+  </div>
+</header>
+
+<!-- =================== PROYECTOS =================== -->
+<section id="proyectos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">// Proyectos</p>
+      <h2>Cosas que he construido</h2>
+      <p>Una selección de proyectos académicos y personales. El código completo está en GitHub.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- ===== PROYECTO DESTACADO: Festival ===== -->
+      <article class="card featured reveal">
+        <div class="shot">
+          <!-- Para poner tu captura real:
+               1) Crea una carpeta "img" en tu repo.
+               2) Sube ahí tu imagen (ej. festival.png).
+               3) Borra el <span> de abajo y descomenta el <img>.  -->
+          <span>Agrega tu captura<br>img/festival.png</span>
+          <!-- <img src="img/festival.png" alt="Festival de las Luciérnagas"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Destacado · Proyecto en equipo</p>
+          <h3>Festival de las Luciérnagas</h3>
+          <p class="desc">Plataforma web full-stack para gestionar reservaciones de cabañas y camping en un evento, con mapa interactivo y panel de administración. Desarrollada en equipo de 5 personas. Mi rol: Scrum Master y desarrollo. Incluye seguridad OWASP, correos automatizados y metodologías ágiles.</p>
+          <div class="stack">
+            <span>Python</span><span>Django</span><span>SQLite</span><span>Leaflet</span><span>HTML</span><span>CSS</span>
+          </div>
+          <div class="card-links">
+            <a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener">Ver código ↗</a>
+            <!-- Cuando despliegues la demo, cambia el href y quita la clase "muted" -->
+            <a class="muted" href="#" target="_blank" rel="noopener">Demo (próximamente)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Ollama ===== -->
+      <article class="card reveal">
+        <div class="shot">
+          <span>Agrega tu captura<br>img/ollama.png</span>
+          <!-- <img src="img/ollama.png" alt="IA local con Ollama"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Proyecto personal</p>
+          <h3>IA local con Ollama</h3>
+          <p class="desc">Despliegue y administración de modelos de IA en local con Ollama, ejecutando distintas versiones de modelos de forma multiplataforma (Windows, Linux, macOS) e integrándolos por su API local, priorizando la privacidad de los datos.</p>
+          <div class="stack"><span>Ollama</span><span>Python</span><span>API local</span></div>
+          <div class="card-links">
+            <!-- Reemplaza con la URL de tu repo -->
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Bloc de notas ===== -->
+      <article class="card reveal">
+        <div class="shot">
+          <span>Agrega tu captura<br>img/notas.png</span>
+          <!-- <img src="img/notas.png" alt="Bloc de notas web"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Proyecto personal</p>
+          <h3>Bloc de notas web</h3>
+          <p class="desc">Aplicación web de notas con una interfaz limpia e intuitiva: permite crear, editar y guardar notas directamente en el navegador. Al ser estática, es ideal para desplegarla como demo en vivo.</p>
+          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="card-links">
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+            <a class="muted" href="#" target="_blank" rel="noopener">Demo (próximamente)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Académico: Base de datos ===== -->
+      <article class="card reveal">
+        <div class="shot">
+          <span>Agrega tu captura<br>img/bd.png</span>
+          <!-- <img src="img/bd.png" alt="Sistema de gestión de eventos"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Proyecto académico</p>
+          <h3>Gestión de eventos (BD)</h3>
+          <p class="desc">Modelo relacional en PostgreSQL con integridad referencial mediante claves primarias y foráneas, consultas SQL complejas y disparadores (triggers) para automatizar comportamientos de la base de datos.</p>
+          <div class="stack"><span>PostgreSQL</span><span>SQL</span><span>Docker</span></div>
+          <div class="card-links">
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Académico: Clima APIs ===== -->
+      <article class="card reveal">
+        <div class="shot">
+          <span>Agrega tu captura<br>img/clima.png</span>
+          <!-- <img src="img/clima.png" alt="App de clima con APIs"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Proyecto académico</p>
+          <h3>App de clima con APIs</h3>
+          <p class="desc">Aplicación en Python que consume APIs externas para obtener datos climáticos, procesando y estructurando la información para su análisis y presentación.</p>
+          <div class="stack"><span>Python</span><span>APIs REST</span></div>
+          <div class="card-links">
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ===== Académico: Shamir ===== -->
+      <article class="card reveal">
+        <div class="shot">
+          <span>Agrega tu captura<br>img/shamir.png</span>
+          <!-- <img src="img/shamir.png" alt="Secreto Compartido de Shamir"> -->
+        </div>
+        <div class="card-body">
+          <p class="card-tag">Proyecto académico · Criptografía</p>
+          <h3>Secreto Compartido de Shamir</h3>
+          <p class="desc">Implementación del esquema criptográfico de Shamir para proteger archivos de texto, dividiendo una clave en fragmentos que solo se recuperan con un umbral mínimo.</p>
+          <div class="stack"><span>Python</span><span>cryptography</span></div>
+          <div class="card-links">
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- =================== HABILIDADES =================== -->
+<section id="habilidades">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">// Habilidades</p>
+      <h2>Con qué trabajo</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-row reveal"><h4>Lenguajes</h4><p>C, C++, Python, Java, Racket, Kotlin, JavaScript, Ensamblador</p></div>
+      <div class="skill-row reveal"><h4>Web</h4><p>HTML, CSS, Django, Leaflet</p></div>
+      <div class="skill-row reveal"><h4>Bases de datos</h4><p>SQL, PostgreSQL, SQLite</p></div>
+      <div class="skill-row reveal"><h4>Seguridad y redes</h4><p>OWASP, cifrado, control de acceso por rol, VPNs, APIs, Cisco (básico)</p></div>
+      <div class="skill-row reveal"><h4>IA local</h4><p>Ollama, administración de modelos multiplataforma</p></div>
+      <div class="skill-row reveal"><h4>Herramientas</h4><p>Git, Docker, Linux</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACTO =================== -->
+<section id="contacto">
+  <div class="wrap contact-inner reveal">
+    <p class="eyebrow">// Contacto</p>
+    <h2>Hablemos</h2>
+    <p>¿Tienes una oportunidad o quieres ver más de mi trabajo? Escríbeme.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a>
+      <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
+      <!-- Agrega tu LinkedIn cuando lo tengas:
+      <a class="btn btn-ghost" href="https://linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener">LinkedIn</a> -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>Aaron López Mendoza</span>
+    <span>Ciudad de México · <span id="year"></span></span>
+  </div>
+</footer>
+
+<script>
+  // año dinámico
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
