@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aaron López Mendoza — Portafolio</title>
+<title>Aaron López Mendoza — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -88,8 +88,8 @@
   /* ---------- Profile intro (avatar + name) ---------- */
   .profile-intro{
     display:flex;
-    align-items:center;
-    gap:18px;
+    align-items:flex-start;
+    gap:16px;
     margin-bottom:38px;
   }
   .avatar{
@@ -116,6 +116,7 @@
     text-align:center;padding:6px;
   }
   .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  .profile-text{padding-top:6px}
   .profile-name{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.004em}
   .profile-meta{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin-top:5px}
   @media(max-width:480px){
@@ -244,9 +245,9 @@
   <div class="wrap nav-inner">
     <span class="nav-name">Aaron López</span>
     <div class="nav-links">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
       <a class="pill" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
@@ -256,34 +257,34 @@
   <div class="wrap hero-content">
     <div class="profile-intro reveal">
       <div class="avatar">
-        <!-- Reemplaza este placeholder con tu foto:
-             <img src="img/foto.jpg" alt="Foto de Aaron López Mendoza"> -->
-        <span>Tu foto aquí</span>
+        <!-- Replace this placeholder with your photo:
+             <img src="img/photo.jpg" alt="Photo of Aaron López Mendoza"> -->
+        <span>Your photo here</span>
       </div>
-      <div>
+      <div class="profile-text">
         <p class="profile-name">Aaron López Mendoza</p>
-        <p class="profile-meta">Ciudad de México · alopez250405@gmail.com</p>
+        <p class="profile-meta">Mexico City · alopez250405@gmail.com</p>
       </div>
     </div>
-    <p class="eyebrow">// Portafolio</p>
-    <h1>Construyo software<br><span class="accent">full-stack y sistemas</span></h1>
-    <p class="lede">Estudiante de Ciencias de la Computación en la UNAM. Desarrollo web, bases de datos e inteligencia artificial local, con foco en seguridad y buenas prácticas.</p>
+    <p class="eyebrow">// Portfolio</p>
+    <h1>I build full-stack<br><span class="accent">software & systems</span></h1>
+    <p class="lede">Computer Science student at UNAM. I work on web development, databases, and local AI, with a focus on security and good engineering practices.</p>
     <div class="hero-actions">
-      <a class="btn btn-solid" href="#proyectos">Ver proyectos</a>
+      <a class="btn btn-solid" href="#projects">View projects</a>
       <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
-      <!-- Para el CV: sube tu PDF al repo (ej. cv.pdf) y deja el href como abajo -->
-      <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">Descargar CV</a>
+      <!-- For your resume: upload your PDF to the repo (e.g. cv.pdf) and keep the href below -->
+      <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">Download resume</a>
     </div>
   </div>
 </header>
 
 <!-- =================== PROYECTOS =================== -->
-<section id="proyectos">
+<section id="projects">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">// Proyectos</p>
-      <h2>Cosas que he construido</h2>
-      <p>Una selección de proyectos académicos y personales. El código completo está en GitHub.</p>
+      <p class="eyebrow">// Projects</p>
+      <h2>Things I've built</h2>
+      <p>A selection of academic and personal projects. Full code is on GitHub.</p>
     </div>
 
     <div class="grid">
@@ -294,16 +295,16 @@
           <img src="img/festival.png" alt="Festival de las Luciérnagas — mapa interactivo">
         </div>
         <div class="card-body">
-          <p class="card-tag">Destacado · Proyecto en equipo</p>
+          <p class="card-tag">Featured · Team project</p>
           <h3>Festival de las Luciérnagas</h3>
-          <p class="desc">Plataforma web full-stack para gestionar reservaciones de cabañas y camping en un evento, con mapa interactivo y panel de administración. Desarrollada en equipo de 5 personas. Mi rol: Scrum Master y desarrollo. Incluye seguridad OWASP, correos automatizados y metodologías ágiles.</p>
+          <p class="desc">Full-stack web platform for managing cabin and campsite reservations for an event, with an interactive map and an admin dashboard. Built by a 5-person team; my role was Scrum Master and developer. Includes OWASP security practices, automated emails, and agile methodologies.</p>
           <div class="stack">
             <span>Python</span><span>Django</span><span>SQLite</span><span>Leaflet</span><span>HTML</span><span>CSS</span>
           </div>
           <div class="card-links">
-            <a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener">Ver código ↗</a>
-            <!-- Cuando despliegues la demo, cambia el href y quita la clase "muted" -->
-            <a class="muted" href="#" target="_blank" rel="noopener">Demo (próximamente)</a>
+            <a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener">View code ↗</a>
+            <!-- When you deploy the demo, update the href and remove the "muted" class -->
+            <a class="muted" href="#" target="_blank" rel="noopener">Demo (coming soon)</a>
           </div>
         </div>
       </article>
@@ -314,47 +315,47 @@
           <img src="img/ollama.png" alt="Agente de IA Local — interfaz de chat">
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto personal</p>
-          <h3>Agente de IA Local</h3>
-          <p class="desc">Asistente de IA que corre 100% en local (sin internet ni APIs de pago) y automatiza tareas por lenguaje natural mediante function calling: crea proyectos, notas y eventos de calendario. Incluye interfaz de chat, entrada/salida por voz, visión y análisis de datos. Seguro por diseño: solo escribe dentro de su carpeta de trabajo.</p>
+          <p class="card-tag">Personal project</p>
+          <h3>Local AI Agent</h3>
+          <p class="desc">AI assistant that runs 100% locally (no internet or paid APIs) and automates tasks from natural language via function calling: creates projects, notes, and calendar events. Includes a chat interface, voice input/output, vision, and data analysis. Secure by design — it only writes inside its own working folder.</p>
           <div class="stack"><span>Ollama</span><span>Qwen 2.5</span><span>Python</span><span>Vosk</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- ===== MPI: Multiplicación de matrices en paralelo ===== -->
+      <!-- ===== MPI: Parallel Matrix Multiplication ===== -->
       <article class="card reveal">
         <div class="shot">
-          <span>Agrega tu gráfica de speedup<br>img/matmul.png</span>
-          <!-- Genera esta imagen con scripts/plot_results.py del repo y colócala aquí:
-               <img src="img/matmul.png" alt="Gráfica de speedup — multiplicación de matrices en paralelo"> -->
+          <span>Add your speedup chart<br>img/matmul.png</span>
+          <!-- Generate this image with the repo's scripts/plot_results.py and place it here:
+               <img src="img/matmul.png" alt="Speedup chart — parallel matrix multiplication"> -->
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto personal · Cómputo paralelo</p>
-          <h3>Multiplicación de matrices en paralelo</h3>
-          <p class="desc">Multiplicación de matrices densas paralelizada con MPI en C, con reparto de filas por bloques (Scatterv/Bcast/Gatherv) que soporta tamaños no divisibles entre procesos. Incluye verificación automática de correctitud contra la versión secuencial y un script de benchmarking que mide speedup y eficiencia paralela.</p>
+          <p class="card-tag">Personal project · Parallel computing</p>
+          <h3>Parallel Matrix Multiplication</h3>
+          <p class="desc">Dense matrix multiplication parallelized with MPI in C, using row-wise block distribution (Scatterv/Bcast/Gatherv) that supports sizes not evenly divisible across processes. Includes automatic correctness verification against the sequential version and a benchmarking script that measures speedup and parallel efficiency.</p>
           <div class="stack"><span>C</span><span>MPI</span><span>Bash</span><span>Python</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/parallel-matmul-mpi" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25/parallel-matmul-mpi" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
       </article>
 
-      <!-- ===== Bloc de notas ===== -->
+      <!-- ===== Notes board ===== -->
       <article class="card reveal">
         <div class="shot shot-wide">
           <img src="img/notas.png" alt="Trello Notes — tablero de notas">
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto personal</p>
-          <h3>Trello Notes — tablero de notas</h3>
-          <p class="desc">Tablero de notas estilo Kanban: organiza tarjetas en listas, con arrastrar y soltar para reorganizarlas, búsqueda, colores y temas. Guardado automático en el navegador (localStorage). Hecho con JavaScript puro y organizado en módulos.</p>
+          <p class="card-tag">Personal project</p>
+          <h3>Trello Notes — Kanban Board</h3>
+          <p class="desc">Kanban-style note board: organize cards into lists, drag and drop to reorder them, search, colors, and themes. Auto-saves to the browser (localStorage). Built with vanilla JavaScript, organized into modules.</p>
           <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Bloc-Notas" target="_blank" rel="noopener">Ver código ↗</a>
-            <a href="https://aaronlm25.github.io/Proyecto-Bloc-Notas/main/" target="_blank" rel="noopener">Ver demo ↗</a>
+            <a href="https://github.com/Aaronlm25/Proyecto-Bloc-Notas" target="_blank" rel="noopener">View code ↗</a>
+            <a href="https://aaronlm25.github.io/Proyecto-Bloc-Notas/main/" target="_blank" rel="noopener">View demo ↗</a>
           </div>
         </div>
       </article>
@@ -362,16 +363,16 @@
       <!-- ===== Académico: Base de datos ===== -->
       <article class="card reveal">
         <div class="shot">
-          <span>Agrega tu captura<br>img/bd.png</span>
-          <!-- <img src="img/bd.png" alt="Sistema de gestión de eventos"> -->
+          <span>Add your screenshot<br>img/bd.png</span>
+          <!-- <img src="img/bd.png" alt="Event management system"> -->
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto académico</p>
-          <h3>Gestión de eventos (BD)</h3>
-          <p class="desc">Modelo relacional en PostgreSQL con integridad referencial mediante claves primarias y foráneas, consultas SQL complejas y disparadores (triggers) para automatizar comportamientos de la base de datos.</p>
+          <p class="card-tag">Academic project</p>
+          <h3>Event Management (Database)</h3>
+          <p class="desc">Relational model in PostgreSQL with referential integrity via primary/foreign keys, complex SQL queries, and triggers to automate database behavior.</p>
           <div class="stack"><span>PostgreSQL</span><span>SQL</span><span>Docker</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Torneo-Pokemon" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25/Proyecto-Torneo-Pokemon" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
       </article>
@@ -382,12 +383,12 @@
           <img src="img/clima.png" alt="App de clima con APIs">
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto académico</p>
-          <h3>App de clima con APIs</h3>
-          <p class="desc">Aplicación web en Flask que consulta el clima por ciudad, código IATA o número de vuelo usando la API de OpenWeather. Incluye autocorrector de búsquedas, autocompletado y caché en JSON para reducir llamadas a la API.</p>
+          <p class="card-tag">Academic project</p>
+          <h3>Weather App with APIs</h3>
+          <p class="desc">Flask web app that looks up weather by city, IATA code, or flight number using the OpenWeather API. Includes search auto-correction, autocomplete, and a JSON cache to reduce API calls.</p>
           <div class="stack"><span>Python</span><span>Flask</span><span>OpenWeather API</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-App-Clima" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25/Proyecto-App-Clima" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
       </article>
@@ -395,16 +396,16 @@
       <!-- ===== Académico: Shamir ===== -->
       <article class="card reveal">
         <div class="shot">
-          <span>Agrega tu captura<br>img/shamir.png</span>
-          <!-- <img src="img/shamir.png" alt="Secreto Compartido de Shamir"> -->
+          <span>Add your screenshot<br>img/shamir.png</span>
+          <!-- <img src="img/shamir.png" alt="Shamir's Secret Sharing"> -->
         </div>
         <div class="card-body">
-          <p class="card-tag">Proyecto académico · Criptografía</p>
-          <h3>Secreto Compartido de Shamir</h3>
-          <p class="desc">Implementación del esquema criptográfico de Shamir para proteger archivos de texto, dividiendo una clave en fragmentos que solo se recuperan con un umbral mínimo.</p>
+          <p class="card-tag">Academic project · Cryptography</p>
+          <h3>Shamir's Secret Sharing</h3>
+          <p class="desc">Implementation of Shamir's Secret Sharing scheme to protect text files, splitting a key into shares that can only be recovered above a minimum threshold.</p>
           <div class="stack"><span>Python</span><span>cryptography</span></div>
           <div class="card-links">
-            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">Ver código ↗</a>
+            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">View code ↗</a>
           </div>
         </div>
       </article>
@@ -414,34 +415,34 @@
 </section>
 
 <!-- =================== HABILIDADES =================== -->
-<section id="habilidades">
+<section id="skills">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">// Habilidades</p>
-      <h2>Con qué trabajo</h2>
+      <p class="eyebrow">// Skills</p>
+      <h2>What I work with</h2>
     </div>
     <div class="skills">
-      <div class="skill-row reveal"><h4>Lenguajes</h4><p>C, C++, Python, Java, Racket, Kotlin, JavaScript, Ensamblador</p></div>
+      <div class="skill-row reveal"><h4>Languages</h4><p>C, C++, Python, Java, Racket, Kotlin, JavaScript, Assembly</p></div>
       <div class="skill-row reveal"><h4>Web</h4><p>HTML, CSS, Django, Leaflet</p></div>
-      <div class="skill-row reveal"><h4>Bases de datos</h4><p>SQL, PostgreSQL, SQLite</p></div>
-      <div class="skill-row reveal"><h4>Seguridad y redes</h4><p>OWASP, cifrado, control de acceso por rol, VPNs, APIs, Cisco (básico)</p></div>
-      <div class="skill-row reveal"><h4>IA local</h4><p>Ollama, administración de modelos multiplataforma</p></div>
-      <div class="skill-row reveal"><h4>Herramientas</h4><p>Git, Docker, Linux</p></div>
+      <div class="skill-row reveal"><h4>Databases</h4><p>SQL, PostgreSQL, SQLite</p></div>
+      <div class="skill-row reveal"><h4>Security & networking</h4><p>OWASP, encryption, role-based access control, VPNs, APIs, Cisco (basic)</p></div>
+      <div class="skill-row reveal"><h4>Local AI</h4><p>Ollama, cross-platform model management</p></div>
+      <div class="skill-row reveal"><h4>Tools</h4><p>Git, Docker, Linux</p></div>
     </div>
   </div>
 </section>
 
 <!-- =================== CONTACTO =================== -->
-<section id="contacto">
+<section id="contact">
   <div class="wrap contact-inner reveal">
-    <p class="eyebrow">// Contacto</p>
-    <h2>Hablemos</h2>
-    <p>¿Tienes una oportunidad o quieres ver más de mi trabajo? Escríbeme.</p>
+    <p class="eyebrow">// Contact</p>
+    <h2>Let's talk</h2>
+    <p>Have an opportunity or want to see more of my work? Get in touch.</p>
     <div class="hero-actions">
       <a class="btn btn-solid" href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a>
       <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
-      <!-- Agrega tu LinkedIn cuando lo tengas:
-      <a class="btn btn-ghost" href="https://linkedin.com/in/TU-USUARIO" target="_blank" rel="noopener">LinkedIn</a> -->
+      <!-- Add your LinkedIn once you have it:
+      <a class="btn btn-ghost" href="https://linkedin.com/in/YOUR-USERNAME" target="_blank" rel="noopener">LinkedIn</a> -->
     </div>
   </div>
 </section>
@@ -449,12 +450,12 @@
 <footer>
   <div class="wrap foot-inner">
     <span>Aaron López Mendoza</span>
-    <span>Ciudad de México · <span id="year"></span></span>
+    <span>Mexico City · <span id="year"></span></span>
   </div>
 </footer>
 
 <script>
-  // año dinámico
+  // dynamic year
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // reveal on scroll
