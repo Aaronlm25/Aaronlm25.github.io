@@ -107,7 +107,7 @@
   #bg3d{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:0;transition:opacity 1.4s ease;pointer-events:none}
   #bg3d.on{opacity:1}
   .hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:linear-gradient(90deg,rgba(245,247,255,.9) 0%,rgba(245,247,255,.65) 42%,rgba(245,247,255,0) 64%)}
+    background:linear-gradient(90deg,rgba(245,247,255,.82) 0%,rgba(245,247,255,.55) 40%,rgba(245,247,255,0) 62%)}
   .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start;position:relative;z-index:1}
   .hero-text{grid-column:1 / 8;padding:88px 0 64px}
   .photo-wrap{grid-column:8 / 13;margin-top:64px;margin-bottom:-56px;position:relative}
@@ -948,7 +948,7 @@ try {
   /* ---- layers of neurons (input → hidden → output), arranged on rings ---- */
   const small = innerWidth < 768;
   const LAYERS = small ? [4, 7, 8, 7, 4] : [5, 9, 12, 14, 12, 9, 5];
-  const GAP = small ? 3.6 : 4.4;
+  const GAP = small ? 3.6 : 3.9;
   const palette = [new THREE.Color('#4F46E5'), new THREE.Color('#0EA5E9'), new THREE.Color('#14B8A6')];
   const colorAt = u => u < .5 ? palette[0].clone().lerp(palette[1], u * 2) : palette[1].clone().lerp(palette[2], (u - .5) * 2);
   const nodes = [], layerOf = [], firstOf = [];
@@ -1057,7 +1057,7 @@ try {
     const r = canvas.parentElement.getBoundingClientRect();
     renderer.setSize(r.width, r.height, false);
     camera.aspect = r.width / r.height; camera.updateProjectionMatrix();
-    net.position.x = 0;
+    net.position.x = small ? 0 : camera.aspect > 1.8 ? -5.5 : -2.5;  // left of the photo, so more of it shows
     camera.position.set(0, 0, small ? 20 : 17);
   }
   resize(); addEventListener('resize', resize);
