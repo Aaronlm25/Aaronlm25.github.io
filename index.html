@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aaron López Mendoza — Portfolio</title>
 <meta name="description" content="Aaron López Mendoza — Computer Science student at UNAM. Full-stack software, databases and local AI.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aaronlm25.github.io/">
+<meta property="og:title" content="Aaron López Mendoza — Portfolio">
+<meta property="og:description" content="Computer Science student at UNAM · Full-stack developer. Projects, UNAM collaborations and journey.">
+<meta property="og:image" content="https://aaronlm25.github.io/img/foto.jpg">
+<meta property="og:image:alt" content="Aaron López Mendoza">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -153,12 +160,19 @@
   .card h3::after{content:"→";font-weight:600}
   .card .desc{color:var(--muted);font-size:.86rem;flex:1;margin-bottom:14px}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-  .chips span{font-size:.68rem;font-weight:600;border:1px solid var(--soft);border-radius:20px;padding:3px 9px}
+  .chips > span{font-size:.68rem;font-weight:600;border:1px solid var(--soft);border-radius:20px;padding:3px 9px}
   .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.86rem;font-weight:600}
   .links .muted{color:var(--muted);font-weight:500}
   .card.more{justify-content:center;align-items:flex-start;padding:28px;background:var(--band);border-style:dashed;text-decoration:none}
   .card.more h3{font-size:1.15rem;width:100%}
   .card.more p{color:var(--muted);font-size:.86rem}
+
+  /* ---------- 4b. skills ---------- */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+  .skill{border-top:2px solid var(--ink);padding-top:14px}
+  .skill h3{font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+  .skill .chips{margin-bottom:0}
+  .skill .chips > span{font-size:.8rem;padding:5px 12px;border-color:var(--line)}
 
   /* ---------- 5. journey ---------- */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:32px}
@@ -238,6 +252,7 @@
     .hero-photo{grid-column:8 / 13;margin:48px 0 40px;aspect-ratio:4 / 5}
     .now{margin-top:48px}
     .projects{grid-template-columns:repeat(2,1fr)}
+    .skills{grid-template-columns:repeat(2,1fr)}
     .stats{grid-template-columns:repeat(2,1fr)}
     .tl-item{grid-template-columns:100px var(--gap) 1fr}
     .news-card{flex-basis:calc((100% - var(--gap)) / 2)}
@@ -260,6 +275,7 @@
     .now p{flex:1 1 calc(100% - 48px)}
     .now a{margin-left:48px}
     .projects{grid-template-columns:1fr}
+    .skills{grid-template-columns:1fr}
     .stat{padding:14px 16px}
     .stat b{font-size:2rem}
     .tl-item{grid-template-columns:16px 15px 1fr}
@@ -317,6 +333,7 @@
   <div class="menu-panel" id="menu">
     <div class="wrap">
       <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+      <a href="#skills"><span class="en">Skills</span><span class="es">Habilidades</span></a>
       <a href="#journey"><span class="en">Journey</span><span class="es">Trayectoria</span></a>
       <a href="#news"><span class="en">News</span><span class="es">Noticias</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
@@ -338,7 +355,7 @@
     <div class="hero-text">
       <p class="eyebrow"><span class="en">Portfolio · Computer Science · UNAM</span><span class="es">Portafolio · Ciencias de la Computación · UNAM</span></p>
       <h1 id="name">Aaron<br>López Mendoza</h1>
-      <p class="role"><span class="en">Full-Stack Software Engineer</span><span class="es">Ingeniero de software full-stack</span></p>
+      <p class="role"><span class="en">Computer Science student · Full-stack developer</span><span class="es">Estudiante de Ciencias de la Computación · Desarrollador full-stack</span></p>
       <p class="place"><span class="en">B.Sc. in Computer Science, Faculty of Sciences, UNAM</span><span class="es">Lic. en Ciencias de la Computación, Facultad de Ciencias, UNAM</span></p>
       <p class="place-sub"><span class="en">Mexico City · Databases · Local AI · Linux</span><span class="es">Ciudad de México · Bases de datos · IA local · Linux</span></p>
       <p class="contact-lines">
@@ -425,14 +442,14 @@
       </article>
 
       <article class="card reveal" id="p-festival">
-        <div class="thumb"><img src="img/festival.png" data-alt-en="Festival de las Luciérnagas — interactive map" data-alt-es="Festival de las Luciérnagas — mapa interactivo" alt="Festival de las Luciérnagas — interactive map" loading="lazy"></div>
+        <div class="thumb"><img src="img/festival.jpg" data-alt-en="Festival de las Luciérnagas — interactive map" data-alt-es="Festival de las Luciérnagas — mapa interactivo" alt="Festival de las Luciérnagas — interactive map" loading="lazy"></div>
         <div class="card-body">
           <p class="tag"><span class="en">Team project · Scrum Master</span><span class="es">Proyecto en equipo · Scrum Master</span></p>
           <h3>Festival de las Luciérnagas</h3>
           <p class="desc en">Full-stack reservation platform for cabins and campsites with an interactive map and admin dashboard. 5-person team, OWASP practices and automated emails.</p>
           <p class="desc es">Plataforma full-stack de reservas de cabañas y campamentos con mapa interactivo y panel de administración. Equipo de 5 personas, prácticas OWASP y correos automáticos.</p>
           <div class="chips"><span>Django</span><span>PostgreSQL</span><span>Leaflet</span></div>
-          <div class="links"><a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
+          <div class="links"><a href="https://github.com/darshanperez/ingsofware-p1" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
       </article>
 
@@ -456,7 +473,7 @@
           <p class="desc en">Matrix multiplication with MPI in C: 6.8x speedup on 8 processes (85% efficiency), automatic correctness checks and benchmarking scripts.</p>
           <p class="desc es">Multiplicación de matrices con MPI en C: 6.8 veces más rápida con 8 procesos (85 % de eficiencia), verificación automática y scripts de medición.</p>
           <div class="chips"><span>C</span><span>MPI</span><span>Python</span></div>
-          <div class="links"><a href="https://github.com/Aaronlm25/parallel-matmul-mpi" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
+          <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
         </div>
       </article>
 
@@ -467,6 +484,28 @@
         <p class="es">Base de datos de eventos, tablero de notas Kanban, app del clima con APIs y el esquema de Shamir.</p>
       </a>
 
+    </div>
+  </section>
+
+  <!-- ================= 4b. SKILLS ================= -->
+  <section id="skills">
+    <div class="sec-head reveal">
+      <h2><span class="en">Skills</span><span class="es">Habilidades</span></h2>
+      <p><span class="en">What I work with.</span><span class="es">Con lo que trabajo.</span></p>
+    </div>
+    <div class="skills reveal">
+      <div class="skill"><h3><span class="en">Languages</span><span class="es">Lenguajes</span></h3>
+        <div class="chips"><span>Python</span><span>Java</span><span>C</span><span>C++</span><span>JavaScript</span><span>TypeScript</span><span>Kotlin</span><span>Racket</span><span>Assembly</span></div></div>
+      <div class="skill"><h3><span class="en">Web &amp; mobile</span><span class="es">Web y móvil</span></h3>
+        <div class="chips"><span>Django</span><span>Flask</span><span>HTML</span><span>CSS</span><span>Leaflet</span><span>React Native</span><span>Expo</span></div></div>
+      <div class="skill"><h3><span class="en">Databases</span><span class="es">Bases de datos</span></h3>
+        <div class="chips"><span>PostgreSQL</span><span>SQL</span><span>SQLite</span><span><span class="en">Relational design</span><span class="es">Diseño relacional</span></span><span>Triggers</span></div></div>
+      <div class="skill"><h3><span class="en">AI &amp; parallel computing</span><span class="es">IA y cómputo paralelo</span></h3>
+        <div class="chips"><span>Ollama</span><span>PyTorch</span><span><span class="en">Fine-tuning</span><span class="es">Ajuste fino</span></span><span>MPI</span></div></div>
+      <div class="skill"><h3><span class="en">Tools &amp; practices</span><span class="es">Herramientas y prácticas</span></h3>
+        <div class="chips"><span>Git</span><span>Docker</span><span>Linux</span><span>Scrum</span><span>Kanban</span><span>OWASP</span></div></div>
+      <div class="skill"><h3><span class="en">Spoken languages</span><span class="es">Idiomas</span></h3>
+        <div class="chips"><span><span class="en">Spanish — native</span><span class="es">Español — nativo</span></span><span><span class="en">English — intermediate</span><span class="es">Inglés — intermedio</span></span></div></div>
     </div>
   </section>
 
@@ -505,7 +544,7 @@
         <div class="tl-card"><span class="year-in">2026</span>
           <p class="tag"><span class="en">Competition</span><span class="es">Competencia</span></p>
           <h3><span class="en">ICPC 2026 — Regional contest</span><span class="es">ICPC 2026 — Etapa regional</span></h3>
-          <p><span class="en">Team Kernel Panic · finished in 300th place</span><span class="es">Equipo Kernel Panic · lugar 300</span></p></div>
+          <p><span class="en">Participant with team Kernel Panic</span><span class="es">Participante con el equipo Kernel Panic</span></p></div>
       </li>
       <li class="tl-item" data-cat="unam">
         <span class="tl-year">2026</span><span class="tl-rail"></span>
@@ -606,7 +645,7 @@
           <div class="thumb"><div class="ph"><b>ICPC 2026</b></div></div>
           <div class="body"><p class="tag"><span class="en">Competition · 2026</span><span class="es">Competencia · 2026</span></p>
             <h3><span class="en">ICPC 2026 regional with team Kernel Panic</span><span class="es">Regional del ICPC 2026 con el equipo Kernel Panic</span></h3>
-            <p><span class="en">Competed in the regional round of the International Collegiate Programming Contest and finished 300th.</span><span class="es">Participé en la etapa regional del Concurso Internacional de Programación Universitaria y quedamos en el lugar 300.</span></p>
+            <p><span class="en">Competed with my team in the regional round of the International Collegiate Programming Contest.</span><span class="es">Participé con mi equipo en la etapa regional del Concurso Internacional de Programación Universitaria (ICPC).</span></p>
             <a href="#journey"><span class="en">See my journey →</span><span class="es">Ver mi trayectoria →</span></a></div>
         </article>
         <article class="news-card" aria-roledescription="slide">
@@ -638,7 +677,7 @@
             <a href="#p-llm"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
         </article>
         <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><img src="img/festival.png" alt="" loading="lazy"></div>
+          <div class="thumb"><img src="img/festival.jpg" alt="" loading="lazy"></div>
           <div class="body"><p class="tag"><span class="en">Team · 2026</span><span class="es">Equipo · 2026</span></p>
             <h3><span class="en">Scrum Master for Festival de las Luciérnagas</span><span class="es">Scrum Master del Festival de las Luciérnagas</span></h3>
             <p><span class="en">Led weekly sprints for a 5-person team building a full-stack reservation platform.</span><span class="es">Coordiné los sprints semanales de un equipo de 5 personas que hizo una plataforma de reservas.</span></p>
