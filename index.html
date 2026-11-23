@@ -161,7 +161,7 @@
   section{padding-top:72px}
   .sec-head{margin-bottom:28px}
   h2{font-size:1.65rem;line-height:1.25;letter-spacing:-.01em}
-  .sec-head h2::before,.news-head h2::before{content:"";display:block;width:44px;height:5px;border-radius:3px;background:var(--grad);margin-bottom:14px}
+  .sec-head h2::before{content:"";display:block;width:44px;height:5px;border-radius:3px;background:var(--grad);margin-bottom:14px}
   .sec-head p{color:var(--muted);font-size:.94rem;margin-top:6px}
 
   /* ---------- 4. projects ---------- */
@@ -176,7 +176,7 @@
   .thumb{aspect-ratio:16 / 9;background:var(--band);position:relative;overflow:hidden;border-bottom:1px solid var(--soft)}
   .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
   .thumb.contain img{object-fit:contain}
-  .card:hover .thumb img,.news-card:hover .thumb img{transform:scale(1.05)}
+  .card:hover .thumb img{transform:scale(1.05)}
   .ph{position:absolute;inset:0;display:grid;place-items:center;background:var(--grad-soft);overflow:hidden}
   .ph::before,.ph::after{content:"";position:absolute;border-radius:50%;filter:blur(2px);opacity:.55}
   .ph::before{width:60%;aspect-ratio:1;background:radial-gradient(circle,#A5B4FC,transparent 70%);left:-10%;top:-30%;animation:blob 10s ease-in-out infinite alternate}
@@ -189,6 +189,7 @@
   .card h3::after{content:"→";font-weight:600;color:var(--primary);transition:transform .3s}
   .card:hover h3::after{transform:translateX(4px)}
   .card .desc{color:var(--muted);font-size:.86rem;flex:1;margin-bottom:14px}
+  .card .impact{font-size:.82rem;line-height:1.5;border-left:3px solid var(--primary);padding-left:10px;margin-bottom:16px}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
   .chips > span{font-size:.68rem;font-weight:600;background:var(--tint);color:#3730A3;border-radius:20px;padding:4px 10px}
   .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.86rem;font-weight:600}
@@ -244,40 +245,8 @@
   .tl-card a{color:var(--primary);font-weight:600}
   .tl-card .year-in{display:none;color:var(--c)}
 
-  /* ---------- 6. news carousel ---------- */
-  .news{background:linear-gradient(160deg,#EEF2FF 0%,#F0F9FF 50%,#ECFDF5 100%);margin-top:80px;padding:64px 0 48px}
-  .news-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
-  .news-head p{color:var(--muted);font-size:.94rem;margin-top:6px}
-  .controls{display:flex;gap:12px;flex:0 0 auto}
-  .controls button{
-    height:48px;min-width:48px;border:1.5px solid var(--primary);border-radius:var(--radius);color:var(--primary);
-    background:var(--paper);font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;transition:background .2s,color .2s;
-  }
-  .controls button:hover{background:var(--primary);color:#fff}
-  .controls .pause{min-width:150px}
-  .pause-ico{display:inline-flex;gap:4px}
-  .pause-ico i{display:block;width:5px;height:16px;background:currentColor;border-radius:1px}
-  .play-ico{display:none;width:0;height:0;border-left:13px solid currentColor;border-top:8px solid transparent;border-bottom:8px solid transparent}
-  .paused .pause-ico{display:none}
-  .paused .play-ico{display:inline-block}
-  .viewport{overflow:hidden;padding:8px 4px 16px;margin:-8px -4px -16px}
-  .track{display:flex;gap:var(--gap);transition:transform .7s cubic-bezier(.4,0,.2,1)}
-  .news-card{
-    flex:0 0 calc((100% - 2 * var(--gap)) / 3);
-    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
-    display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;
-  }
-  .news-card:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(79,70,229,.55)}
-  .news-card .body{padding:20px;display:flex;flex-direction:column;flex:1}
-  .news-card h3{font-size:1.05rem;line-height:1.35;margin-bottom:8px}
-  .news-card .body > p:not(.tag){color:var(--muted);font-size:.86rem;flex:1;margin-bottom:16px}
-  .news-card .body > a{font-weight:600;font-size:.94rem;color:var(--primary)}
-  .dots{display:flex;justify-content:center;gap:10px;margin-top:32px}
-  .dots button{width:10px;height:10px;border-radius:5px;border:0;background:#C7D2FE;padding:0;transition:width .3s,background .3s}
-  .dots button[aria-current="true"]{width:30px;background:var(--grad)}
-
   /* ---------- 7. footer ---------- */
-  footer{background:var(--night);color:#fff;padding:48px 0;position:relative}
+  footer{background:var(--night);color:#fff;padding:48px 0;position:relative;margin-top:80px}
   footer::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--grad)}
   .foot{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
   .foot .brand{grid-column:1 / 4;color:#fff}
@@ -302,7 +271,6 @@
     .skills{grid-template-columns:repeat(2,1fr)}
     .stats{grid-template-columns:repeat(2,1fr)}
     .tl-item{grid-template-columns:100px var(--gap) 1fr}
-    .news-card{flex-basis:calc((100% - var(--gap)) / 2)}
     .foot .brand{grid-column:1 / -1}
     .foot-help{grid-column:1 / 7}
     .foot-links{grid-column:7 / 13}
@@ -333,9 +301,6 @@
     .tl-rail{grid-column:1}
     .tl-card{grid-column:3;padding:16px}
     .tl-card .year-in{display:block;font-size:1.2rem;font-weight:700;margin-bottom:2px}
-    .news-head{flex-direction:column;align-items:stretch}
-    .controls .pause{margin-right:auto}
-    .news-card{flex-basis:100%}
     .foot-help,.foot-links{grid-column:1 / -1}
     .btn-wide{width:100%}
   }
@@ -382,8 +347,8 @@
     html{scroll-behavior:auto}
     *,*::before,*::after{animation:none!important}
     html.js .reveal,html.js .projects .card.reveal{opacity:1;transform:none;transition:none}
-    .card,.track,.dots button,.thumb img,.tl-card,.news-card,.btn{transition:none}
-    .card:hover,.news-card:hover,.tl-card:hover,.btn:hover{transform:none}
+    .card,.thumb img,.tl-card,.btn{transition:none}
+    .card:hover,.tl-card:hover,.btn:hover{transform:none}
   }
 </style>
 </head>
@@ -396,8 +361,8 @@
     <nav class="nav-links" aria-label="Main">
       <a href="#top" aria-current="page"><span class="en">Home</span><span class="es">Inicio</span></a>
       <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+      <a href="#skills"><span class="en">Skills</span><span class="es">Habilidades</span></a>
       <a href="#journey"><span class="en">Journey</span><span class="es">Trayectoria</span></a>
-      <a href="#news"><span class="en">News</span><span class="es">Noticias</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
     </nav>
     <div class="seg fontsize" role="group" aria-label="Text size">
@@ -418,7 +383,6 @@
       <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
       <a href="#skills"><span class="en">Skills</span><span class="es">Habilidades</span></a>
       <a href="#journey"><span class="en">Journey</span><span class="es">Trayectoria</span></a>
-      <a href="#news"><span class="en">News</span><span class="es">Noticias</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
       <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
       <div class="seg fontsize" role="group" aria-label="Text size">
@@ -484,21 +448,25 @@
         <div class="card-body">
           <p class="tag"><span class="en">New · Personal project</span><span class="es">Nuevo · Proyecto personal</span></p>
           <h3><span class="en">Syntax — English app</span><span class="es">Syntax — app de inglés</span></h3>
-          <p class="desc en">Android app to practice English grammar and vocabulary: a library of book-based paths, written exercises checked by AI, and TOEFL, IELTS and TOEIC practice.</p>
-          <p class="desc es">App de Android para practicar gramática y vocabulario en inglés: biblioteca de rutas basadas en libros, ejercicios escritos revisados con IA y práctica para TOEFL, IELTS y TOEIC.</p>
+          <p class="desc en">Android app to practice English grammar and vocabulary: 3 books turned into 308 topics and 5,700+ practice items, written exercises checked by AI, and TOEFL, IELTS and TOEIC practice. The interface is in English and the explanations in Spanish, for Spanish-speaking learners.</p>
+          <p class="desc es">App de Android para practicar gramática y vocabulario en inglés: 3 libros convertidos en 308 temas y más de 5,700 ejercicios, escritura revisada con IA y práctica para TOEFL, IELTS y TOEIC. La interfaz está en inglés y las explicaciones en español, pensadas para hispanohablantes.</p>
+          <p class="impact en"><b>My role:</b> sole developer, from design to React Native and Kotlin code and 540+ automated tests. <b>Hardest part:</b> validating every AI response before the learner sees it.</p>
+          <p class="impact es"><b>Mi papel:</b> único desarrollador, del diseño al código en React Native y Kotlin y más de 540 pruebas automáticas. <b>Lo más difícil:</b> validar cada respuesta de la IA antes de que la vea quien estudia.</p>
           <div class="chips"><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Kotlin</span><span>SQLite</span></div>
           <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
         </div>
       </article>
 
       <article class="card reveal" id="p-llm">
-        <div class="thumb"><img src="img/llm.jpg" data-alt-en="Notebook of my GPT: training loss curve and text generated in the style of Don Quixote" data-alt-es="Cuaderno de mi GPT: curva de entrenamiento y texto generado al estilo del Quijote" alt="Notebook of my GPT: training loss curve and text generated in the style of Don Quixote" loading="lazy"></div>
+        <div class="thumb"><img src="img/llm.jpg" data-alt-en="Evaluation of the English corrector: overall accuracy and false alarms of Qwen3 0.6B, 1.7B and 8B on 304 sentences" data-alt-es="Evaluación del corrector de inglés: acierto global y falsas alarmas de Qwen3 0.6B, 1.7B y 8B en 304 frases" alt="Evaluation of the English corrector: overall accuracy and false alarms of Qwen3 0.6B, 1.7B and 8B on 304 sentences" loading="lazy"></div>
         <div class="card-body">
           <p class="tag"><span class="en">New · AI</span><span class="es">Nuevo · IA</span></p>
           <h3><span class="en">My own language model</span><span class="es">Mi propio modelo de lenguaje</span></h3>
-          <p class="desc en">A small GPT built and trained from scratch to understand how LLMs work, now evolving into an offline English corrector that runs inside the phone.</p>
-          <p class="desc es">Un GPT pequeño construido y entrenado desde cero para entender cómo funcionan los LLM, que ahora se convierte en un corrector de inglés sin internet dentro del teléfono.</p>
-          <div class="chips"><span>Python</span><span>PyTorch</span><span>Qwen3</span><span>GGUF</span></div>
+          <p class="desc en">I built and trained a small GPT from scratch (832K parameters; validation loss 1.40 vs 2.28 for a bigram baseline) to learn how LLMs work. Now I'm turning that knowledge into an offline English corrector for my app.</p>
+          <p class="desc es">Construí y entrené un GPT pequeño desde cero (832 mil parámetros; pérdida de validación 1.40 contra 2.28 de un bigrama) para entender cómo funcionan los LLM. Ahora lo aplico a un corrector de inglés sin internet para mi app.</p>
+          <p class="impact en"><b>Result so far:</b> on my 304-sentence test, Qwen3-8B scores 83% but small models only 28–36%. My LoRA fine-tuning pipeline is built to close that gap so the corrector runs on the phone.</p>
+          <p class="impact es"><b>Resultado hasta ahora:</b> en mi examen de 304 frases, Qwen3-8B acierta el 83 % y los modelos pequeños solo entre 28 y 36 %. Mi flujo de ajuste fino con LoRA busca cerrar esa brecha para que el corrector corra en el teléfono.</p>
+          <div class="chips"><span>Python</span><span>PyTorch</span><span>Qwen3</span><span>LoRA</span><span>GGUF</span></div>
           <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
         </div>
       </article>
@@ -522,6 +490,8 @@
           <h3><span class="en">SIA system backend</span><span class="es">Backend del sistema SIA</span></h3>
           <p class="desc en">Backend of the SIA system at UNAM's Institute of Cellular Physiology (IFC): request logic and processing, plus the queries and database design behind them. Credited in the site's acknowledgments.</p>
           <p class="desc es">Backend del sistema SIA del Instituto de Fisiología Celular (IFC) de la UNAM: la lógica y el procesamiento de las solicitudes, y las consultas y el diseño de la base de datos que las respaldan. Aparezco en los agradecimientos del sitio.</p>
+          <p class="impact en"><b>Why it matters:</b> a real system in production, not a class exercise. You can check it on the live site.</p>
+          <p class="impact es"><b>Por qué importa:</b> es un sistema real en producción, no un ejercicio de clase. Se puede comprobar en el sitio.</p>
           <div class="chips"><span>Backend</span><span>SQL</span><span><span class="en">Database design</span><span class="es">Diseño de bases de datos</span></span></div>
           <div class="links"><a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit site ↗</span><span class="es">Ver sitio ↗</span></a></div>
         </div>
@@ -534,6 +504,8 @@
           <h3>Festival de las Luciérnagas</h3>
           <p class="desc en">Full-stack reservation platform for cabins and campsites with an interactive map and admin dashboard. 5-person team, OWASP practices and automated emails.</p>
           <p class="desc es">Plataforma full-stack de reservas de cabañas y campamentos con mapa interactivo y panel de administración. Equipo de 5 personas, prácticas OWASP y correos automáticos.</p>
+          <p class="impact en"><b>My role:</b> Scrum Master (weekly sprints for 5 people) and developer of the platform over a 10-table PostgreSQL schema with government datasets.</p>
+          <p class="impact es"><b>Mi papel:</b> Scrum Master (sprints semanales de 5 personas) y desarrollador de la plataforma sobre un esquema de 10 tablas en PostgreSQL con datos de gobierno.</p>
           <div class="chips"><span>Django</span><span>PostgreSQL</span><span>Leaflet</span></div>
           <div class="links"><a href="https://github.com/darshanperez/ingsofware-p1" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
@@ -546,6 +518,8 @@
           <h3><span class="en">Local AI Agent</span><span class="es">Agente de IA local</span></h3>
           <p class="desc en">Assistant that runs 100% locally and automates tasks from natural language: projects, notes and calendar events, with voice and vision. 10 open models benchmarked.</p>
           <p class="desc es">Asistente que corre 100 % en local y automatiza tareas con lenguaje natural: proyectos, notas y eventos de calendario, con voz y visión. 10 modelos abiertos comparados.</p>
+          <p class="impact en"><b>Result:</b> compared latency, resource use and output quality of 10 models on Linux, Windows and macOS to choose the best one for each machine.</p>
+          <p class="impact es"><b>Resultado:</b> comparé la latencia, el uso de recursos y la calidad de 10 modelos en Linux, Windows y macOS para elegir el mejor en cada equipo.</p>
           <div class="chips"><span>Ollama</span><span>Python</span><span>Vosk</span></div>
           <div class="links"><a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
@@ -558,6 +532,8 @@
           <h3><span class="en">Parallel Matrix Multiplication</span><span class="es">Multiplicación de matrices en paralelo</span></h3>
           <p class="desc en">Matrix multiplication with MPI in C, with uneven row distribution, correctness checks and a benchmark: up to 1.8x on a 4-core laptop, where scaling is limited by memory bandwidth.</p>
           <p class="desc es">Multiplicación de matrices con MPI en C, con reparto de filas no exacto, verificación automática y benchmark: hasta 1.8 veces más rápida en una laptop de 4 núcleos, donde el límite es el ancho de banda de memoria.</p>
+          <p class="impact en"><b>What I learned:</b> adding processes stops paying off once memory bandwidth, not the CPU, becomes the bottleneck.</p>
+          <p class="impact es"><b>Lo que aprendí:</b> sumar procesos deja de rendir cuando el cuello de botella es el ancho de banda de memoria y no el CPU.</p>
           <div class="chips"><span>C</span><span>MPI</span><span>Python</span></div>
           <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
         </div>
@@ -581,15 +557,15 @@
     </div>
     <div class="skills reveal">
       <div class="skill"><h3><span class="en">Languages</span><span class="es">Lenguajes</span></h3>
-        <div class="chips"><span>Python</span><span>Java</span><span>C</span><span>C++</span><span>JavaScript</span><span>TypeScript</span><span>Kotlin</span><span>Racket</span><span>Assembly</span></div></div>
+        <div class="chips"><span>Python</span><span>Java</span><span>C</span><span>C++</span><span>JavaScript</span><span>TypeScript</span><span>Kotlin</span><span>SQL</span></div></div>
       <div class="skill"><h3><span class="en">Web &amp; mobile</span><span class="es">Web y móvil</span></h3>
-        <div class="chips"><span>Django</span><span>Flask</span><span>HTML</span><span>CSS</span><span>Leaflet</span><span>React Native</span><span>Expo</span></div></div>
+        <div class="chips"><span>Django</span><span>HTML</span><span>CSS</span><span>Leaflet</span><span>React Native</span><span>Expo</span></div></div>
       <div class="skill"><h3><span class="en">Databases</span><span class="es">Bases de datos</span></h3>
-        <div class="chips"><span>PostgreSQL</span><span>SQL</span><span>SQLite</span><span><span class="en">Relational design</span><span class="es">Diseño relacional</span></span><span>Triggers</span></div></div>
+        <div class="chips"><span>PostgreSQL</span><span>SQLite</span><span><span class="en">Relational design</span><span class="es">Diseño relacional</span></span><span>Triggers</span></div></div>
       <div class="skill"><h3><span class="en">AI &amp; parallel computing</span><span class="es">IA y cómputo paralelo</span></h3>
-        <div class="chips"><span>Ollama</span><span>PyTorch</span><span><span class="en">Fine-tuning</span><span class="es">Ajuste fino</span></span><span>MPI</span></div></div>
+        <div class="chips"><span>Ollama</span><span>PyTorch</span><span><span class="en">LoRA fine-tuning</span><span class="es">Ajuste fino con LoRA</span></span><span><span class="en">LLM evaluation</span><span class="es">Evaluación de LLM</span></span><span>MPI</span></div></div>
       <div class="skill"><h3><span class="en">Tools &amp; practices</span><span class="es">Herramientas y prácticas</span></h3>
-        <div class="chips"><span>Git</span><span>Docker</span><span>Linux</span><span>Scrum</span><span>Kanban</span><span>OWASP</span></div></div>
+        <div class="chips"><span>Git</span><span>Docker</span><span>Linux</span><span>Scrum</span><span>Kanban</span><span>OWASP</span><span>Jest</span></div></div>
       <div class="skill"><h3><span class="en">Spoken languages</span><span class="es">Idiomas</span></h3>
         <div class="chips"><span><span class="en">Spanish — native</span><span class="es">Español — nativo</span></span><span><span class="en">English — intermediate</span><span class="es">Inglés — intermedio</span></span></div></div>
     </div>
@@ -604,7 +580,6 @@
 
     <div class="stats reveal">
       <div class="stat"><b data-count="9.25" data-dec="2">9.25</b><span><span class="en">GPA out of 10</span><span class="es">Promedio de 10</span></span></div>
-      <div class="stat"><b data-count="11">11</b><span><span class="en">Projects</span><span class="es">Proyectos</span></span></div>
       <div class="stat"><b data-count="2">2</b><span><span class="en">UNAM collaborations</span><span class="es">Colaboraciones UNAM</span></span></div>
       <div class="stat"><b data-count="5">5</b><span><span class="en">People led as Scrum Master</span><span class="es">Personas a mi cargo como Scrum Master</span></span></div>
     </div>
@@ -630,7 +605,7 @@
         <div class="tl-card"><span class="year-in">2026</span>
           <p class="tag"><span class="en">Competition</span><span class="es">Competencia</span></p>
           <h3><span class="en">ICPC 2026 — Regional contest</span><span class="es">ICPC 2026 — Etapa regional</span></h3>
-          <p><span class="en">Team Kernel Panic · 300th out of 510 teams</span><span class="es">Equipo Kernel Panic · lugar 300 de 510 equipos</span></p></div>
+          <p><span class="en">Competed with team Kernel Panic in the regional round</span><span class="es">Participé con el equipo Kernel Panic en la etapa regional</span></p></div>
       </li>
       <li class="tl-item" data-cat="unam">
         <span class="tl-year">2026</span><span class="tl-rail"></span>
@@ -708,73 +683,6 @@
 
 </div>
 
-<!-- ================= 6. NEWS ================= -->
-<section class="news" id="news" aria-roledescription="carousel" aria-label="News">
-  <div class="wrap">
-    <div class="news-head">
-      <div>
-        <h2><span class="en">News &amp; activities</span><span class="es">Noticias y actividades</span></h2>
-        <p><span class="en">What I've been up to. They change every 8 seconds.</span><span class="es">Lo que he estado haciendo. Cambian solas cada 8 segundos.</span></p>
-      </div>
-      <div class="controls">
-        <button class="pause" type="button">
-          <span class="pause-ico" aria-hidden="true"><i></i><i></i></span><span class="play-ico" aria-hidden="true"></span>
-          <span class="pause-txt"></span>
-        </button>
-        <button class="prev" type="button" data-aria-en="Previous news" data-aria-es="Noticia anterior">←</button>
-        <button class="next" type="button" data-aria-en="Next news" data-aria-es="Noticia siguiente">→</button>
-      </div>
-    </div>
-    <div class="viewport">
-      <div class="track" aria-live="off">
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><div class="ph"><b>ICPC 2026</b></div></div>
-          <div class="body"><p class="tag"><span class="en">Competition · 2026</span><span class="es">Competencia · 2026</span></p>
-            <h3><span class="en">ICPC 2026 regional with team Kernel Panic</span><span class="es">Regional del ICPC 2026 con el equipo Kernel Panic</span></h3>
-            <p><span class="en">Competed in the regional round of the International Collegiate Programming Contest and finished 300th out of 510 teams.</span><span class="es">Participé en la etapa regional del Concurso Internacional de Programación Universitaria (ICPC) y quedamos en el lugar 300 de 510 equipos.</span></p>
-            <a href="#journey"><span class="en">See my journey →</span><span class="es">Ver mi trayectoria →</span></a></div>
-        </article>
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><div class="ph"><b>PAPIME 2026</b></div></div>
-          <div class="body"><p class="tag"><span class="en">UNAM collaboration · 2026</span><span class="es">Colaboración UNAM · 2026</span></p>
-            <h3><span class="en">Joining a PAPIME project at the Faculty of Sciences</span><span class="es">Me uno a un proyecto PAPIME en la Facultad de Ciencias</span></h3>
-            <p><span class="en">Building a digital learning environment for the Gender and Ethics course of the Biology program.</span><span class="es">Desarrollamos un ambiente digital de aprendizaje para la asignatura de Género y Ética de Biología.</span></p>
-            <a href="#p-papime"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
-        </article>
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><div class="ph"><b>SIA · IFC UNAM</b></div></div>
-          <div class="body"><p class="tag"><span class="en">Recognition · 2026</span><span class="es">Reconocimiento · 2026</span></p>
-            <h3><span class="en">Credited for the SIA backend</span><span class="es">Reconocimiento por el backend del SIA</span></h3>
-            <p><span class="en">Acknowledged by UNAM's Institute of Cellular Physiology for my work on the SIA backend, from request processing to the database.</span><span class="es">El Instituto de Fisiología Celular de la UNAM me reconoce por mi trabajo en el backend del SIA, desde el procesamiento de solicitudes hasta la base de datos.</span></p>
-            <a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit the site ↗</span><span class="es">Ver el sitio ↗</span></a></div>
-        </article>
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><img src="img/syntax.jpg" data-alt-en="Syntax app: home screen and exams screen" data-alt-es="App Syntax: pantalla de inicio y de exámenes" alt="Syntax app: home screen and exams screen" loading="lazy"></div>
-          <div class="body"><p class="tag"><span class="en">New project · 2026</span><span class="es">Nuevo proyecto · 2026</span></p>
-            <h3><span class="en">Building Syntax, my English-learning app</span><span class="es">Desarrollo Syntax, mi app para aprender inglés</span></h3>
-            <p><span class="en">An Android app with book-based grammar paths, AI-checked writing and exam practice.</span><span class="es">Una app de Android con rutas de gramática por libro, escritura revisada con IA y práctica de exámenes.</span></p>
-            <a href="#p-syntax"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
-        </article>
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><img src="img/llm.jpg" data-alt-en="Notebook of my GPT: training loss curve and text generated in the style of Don Quixote" data-alt-es="Cuaderno de mi GPT: curva de entrenamiento y texto generado al estilo del Quijote" alt="Notebook of my GPT: training loss curve and text generated in the style of Don Quixote" loading="lazy"></div>
-          <div class="body"><p class="tag"><span class="en">AI · 2026</span><span class="es">IA · 2026</span></p>
-            <h3><span class="en">Training my own language model</span><span class="es">Entreno mi propio modelo de lenguaje</span></h3>
-            <p><span class="en">From a GPT built from scratch to an English corrector that works without internet.</span><span class="es">De un GPT hecho desde cero a un corrector de inglés que funciona sin internet.</span></p>
-            <a href="#p-llm"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
-        </article>
-        <article class="news-card" aria-roledescription="slide">
-          <div class="thumb"><img src="img/festival.jpg" alt="" loading="lazy"></div>
-          <div class="body"><p class="tag"><span class="en">Team · 2026</span><span class="es">Equipo · 2026</span></p>
-            <h3><span class="en">Scrum Master for Festival de las Luciérnagas</span><span class="es">Scrum Master del Festival de las Luciérnagas</span></h3>
-            <p><span class="en">Led weekly sprints for a 5-person team building a full-stack reservation platform.</span><span class="es">Coordiné los sprints semanales de un equipo de 5 personas que hizo una plataforma de reservas.</span></p>
-            <a href="#p-festival"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
-        </article>
-      </div>
-    </div>
-    <div class="dots" role="group"></div>
-  </div>
-</section>
-
 </main>
 
 <!-- ================= 7. FOOTER ================= -->
@@ -805,13 +713,9 @@ document.documentElement.classList.add('js');
 
   /* ---- texts that JavaScript writes ---- */
   const T = {
-    en: { title: 'Aaron López Mendoza — Portfolio', pause: 'Pause', play: 'Play',
-          pauseL: 'Pause news', playL: 'Play news', more: 'See my full journey', less: 'Show less',
-          dot: 'News', dots: 'Choose news', news: 'News and activities',
+    en: { title: 'Aaron López Mendoza — Portfolio', more: 'See my full journey', less: 'Show less',
           desc: 'Aaron López Mendoza — Computer Science student at UNAM. Full-stack software, databases and local AI.' },
-    es: { title: 'Aaron López Mendoza — Portafolio', pause: 'Pausar', play: 'Reanudar',
-          pauseL: 'Pausar noticias', playL: 'Reanudar noticias', more: 'Ver toda mi trayectoria', less: 'Ver menos',
-          dot: 'Noticia', dots: 'Elegir noticia', news: 'Noticias y actividades',
+    es: { title: 'Aaron López Mendoza — Portafolio', more: 'Ver toda mi trayectoria', less: 'Ver menos',
           desc: 'Aaron López Mendoza — Estudiante de Ciencias de la Computación en la UNAM. Software full-stack, bases de datos e IA local.' }
   };
   let lang = store.get('lang') || ((navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en');
@@ -902,64 +806,9 @@ document.documentElement.classList.add('js');
   moreBtn.addEventListener('click', () => { expanded = !expanded; renderJourney(); });
   refreshers.push(renderJourney);
 
-  /* ---- news carousel: slow, pausable, stops on hover/focus ---- */
-  const news = document.getElementById('news');
-  const track = news.querySelector('.track'), cards = [...track.children];
-  const dotsBox = news.querySelector('.dots'), pauseBtn = news.querySelector('.pause');
-  const perView = () => (innerWidth < 768 ? 1 : innerWidth < 1024 ? 2 : 3);
-  const maxIdx = () => Math.max(0, cards.length - perView());
-  let idx = 0, userPaused = reduce, hover = false, timer = null;
-  function buildDots() {
-    dotsBox.innerHTML = '';
-    for (let i = 0; i <= maxIdx(); i++) {
-      const d = document.createElement('button');
-      d.type = 'button';
-      d.addEventListener('click', () => { go(i); schedule(); });
-      dotsBox.appendChild(d);
-    }
-    labelCarousel();
-  }
-  function labelCarousel() {
-    [...dotsBox.children].forEach((d, i) => d.setAttribute('aria-label', T[lang].dot + ' ' + (i + 1)));
-    dotsBox.setAttribute('aria-label', T[lang].dots);
-    news.setAttribute('aria-label', T[lang].news);
-    pauseBtn.querySelector('.pause-txt').textContent = userPaused ? T[lang].play : T[lang].pause;
-    pauseBtn.setAttribute('aria-label', userPaused ? T[lang].playL : T[lang].pauseL);
-  }
-  function go(i) {
-    const m = maxIdx();
-    idx = i > m ? 0 : i < 0 ? m : i;
-    track.style.transform = `translateX(${-(cards[idx].offsetLeft - cards[0].offsetLeft)}px)`;
-    [...dotsBox.children].forEach((d, k) => d.setAttribute('aria-current', k === idx));
-  }
-  function schedule() {
-    clearInterval(timer);
-    track.setAttribute('aria-live', userPaused ? 'polite' : 'off');
-    if (!userPaused && !hover) timer = setInterval(() => go(idx + 1), 8000);
-  }
-  function setPaused(p) {
-    userPaused = p;
-    pauseBtn.classList.toggle('paused', p);
-    labelCarousel();
-    schedule();
-  }
-  pauseBtn.addEventListener('click', () => setPaused(!userPaused));
-  news.querySelector('.prev').addEventListener('click', () => { go(idx - 1); schedule(); });
-  news.querySelector('.next').addEventListener('click', () => { go(idx + 1); schedule(); });
-  news.addEventListener('mouseenter', () => { hover = true; schedule(); });
-  news.addEventListener('mouseleave', () => { hover = false; schedule(); });
-  news.addEventListener('focusin', () => { hover = true; schedule(); });
-  news.addEventListener('focusout', () => { hover = false; schedule(); });
-  refreshers.push(labelCarousel);
-  let lastPer = perView();
-  addEventListener('resize', () => {
-    if (perView() !== lastPer) { lastPer = perView(); buildDots(); }
-    if (step) applyFont();
-    go(Math.min(idx, maxIdx()));
-  });
+  addEventListener('resize', () => { if (step) applyFont(); });
 
   setLang(lang);
-  buildDots(); go(0); setPaused(userPaused);
 })();
 </script>
 <!-- 3D background of the profile band: a neural network with signals flowing between layers (three.js) -->
