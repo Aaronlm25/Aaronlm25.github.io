@@ -140,6 +140,9 @@
   .hero-text > :nth-child(5){animation-delay:.28s}
   .hero-text > :nth-child(6){animation-delay:.34s}
   .hero-text > :nth-child(7){animation-delay:.42s}
+  .hero-text > :nth-child(8){animation-delay:.5s}
+  .seeking{display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:#065F46;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:20px;padding:7px 16px;margin:4px 0 20px}
+  .seeking i{width:9px;height:9px;border-radius:50%;background:#10B981;box-shadow:0 0 0 3px rgba(16,185,129,.2);flex:0 0 auto}
   .photo-wrap{animation:rise 1s .2s cubic-bezier(.2,.7,.2,1) both}
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
@@ -413,6 +416,7 @@
         <a href="https://linkedin.com/in/aaron-lopez-mendoza-7349103a6" target="_blank" rel="noopener">LinkedIn</a><br>
         <span class="muted"><span class="en">Graduating June 2027 · GPA 9.25/10</span><span class="es">Egreso en junio de 2027 · Promedio 9.25/10</span></span>
       </p>
+      <p class="seeking"><i aria-hidden="true"></i><span class="en">Open to internships and junior backend / full-stack roles</span><span class="es">Busco prácticas profesionales o un puesto junior de backend o full-stack</span></p>
       <div class="actions">
         <a class="btn btn-solid" href="#projects"><span class="en">View my projects</span><span class="es">Ver mis proyectos</span></a>
         <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener"><span class="en">Download my CV</span><span class="es">Descargar mi CV</span></a>
@@ -445,16 +449,30 @@
     <div class="projects">
 
       <article class="card reveal" id="p-syntax">
-        <div class="thumb"><img src="img/syntax.jpg" data-alt-en="Syntax app: home screen and exams screen" data-alt-es="App Syntax: pantalla de inicio y de exámenes" alt="Syntax app: home screen and exams screen" loading="lazy"></div>
+        <div class="thumb"><img src="img/syntax.jpg" data-alt-en="Syntax app: home screen and exams screen (English interface, Spanish explanations for Spanish-speaking learners)" data-alt-es="App Syntax: pantalla de inicio y de exámenes (interfaz en inglés y explicaciones en español)" alt="Syntax app: home screen and exams screen (English interface, Spanish explanations for Spanish-speaking learners)" loading="lazy"></div>
         <div class="card-body">
           <p class="tag"><span class="en">New · Personal project</span><span class="es">Nuevo · Proyecto personal</span></p>
           <h3><span class="en">Syntax — English app</span><span class="es">Syntax — app de inglés</span></h3>
-          <p class="desc en">Android app to practice English grammar and vocabulary: 3 books turned into 308 topics and 5,700+ practice items, written exercises checked by AI, and TOEFL, IELTS and TOEIC practice. The interface is in English and the explanations in Spanish, for Spanish-speaking learners.</p>
-          <p class="desc es">App de Android para practicar gramática y vocabulario en inglés: 3 libros convertidos en 308 temas y más de 5,700 ejercicios, escritura revisada con IA y práctica para TOEFL, IELTS y TOEIC. La interfaz está en inglés y las explicaciones en español, pensadas para hispanohablantes.</p>
+          <p class="desc en">Android app for English grammar and vocabulary: 308 topics from 3 books, 5,700+ exercises, AI-checked writing and TOEFL, IELTS and TOEIC practice.</p>
+          <p class="desc es">App de Android de gramática y vocabulario en inglés: 308 temas de 3 libros, más de 5,700 ejercicios, escritura revisada con IA y práctica de TOEFL, IELTS y TOEIC.</p>
           <p class="impact en"><b>My role:</b> sole developer, from design to React Native and Kotlin code and 540+ automated tests. <b>Hardest part:</b> validating every AI response before the learner sees it.</p>
           <p class="impact es"><b>Mi papel:</b> único desarrollador, del diseño al código en React Native y Kotlin y más de 540 pruebas automáticas. <b>Lo más difícil:</b> validar cada respuesta de la IA antes de que la vea quien estudia.</p>
           <div class="chips"><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Kotlin</span><span>SQLite</span></div>
           <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="p-sia">
+        <div class="thumb"><div class="ph"><b>SIA · IFC UNAM</b></div></div>
+        <div class="card-body">
+          <p class="tag"><span class="en">UNAM collaboration · Backend</span><span class="es">Colaboración UNAM · Backend</span></p>
+          <h3><span class="en">SIA system backend</span><span class="es">Backend del sistema SIA</span></h3>
+          <p class="desc en">Backend of the SIA system at UNAM's Institute of Cellular Physiology (IFC): request processing, queries and database design.</p>
+          <p class="desc es">Backend del sistema SIA del Instituto de Fisiología Celular (IFC) de la UNAM: procesamiento de solicitudes, consultas y diseño de la base de datos.</p>
+          <p class="impact en"><b>Why it matters:</b> a real system in production, not a class exercise. I'm credited on the live site.</p>
+          <p class="impact es"><b>Por qué importa:</b> es un sistema real en producción, no un ejercicio de clase. Aparezco en los agradecimientos del sitio.</p>
+          <div class="chips"><span>Backend</span><span>SQL</span><span><span class="en">Database design</span><span class="es">Diseño de bases de datos</span></span></div>
+          <div class="links"><a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit site ↗</span><span class="es">Ver sitio ↗</span></a></div>
         </div>
       </article>
 
@@ -463,8 +481,8 @@
         <div class="card-body">
           <p class="tag"><span class="en">New · AI</span><span class="es">Nuevo · IA</span></p>
           <h3><span class="en">My own language model</span><span class="es">Mi propio modelo de lenguaje</span></h3>
-          <p class="desc en">I built and trained a small GPT from scratch (832K parameters; validation loss 1.40 vs 2.28 for a bigram baseline) to learn how LLMs work. Now I'm turning that knowledge into an offline English corrector for my app.</p>
-          <p class="desc es">Construí y entrené un GPT pequeño desde cero (832 mil parámetros; pérdida de validación 1.40 contra 2.28 de un bigrama) para entender cómo funcionan los LLM. Ahora lo aplico a un corrector de inglés sin internet para mi app.</p>
+          <p class="desc en">A GPT built and trained from scratch (832K parameters), now applied to an offline English corrector for my app.</p>
+          <p class="desc es">Un GPT construido y entrenado desde cero (832 mil parámetros), que ahora aplico a un corrector de inglés sin internet para mi app.</p>
           <p class="impact en"><b>Result so far:</b> on my 304-sentence test, Qwen3-8B scores 83% but small models only 28–36%. My LoRA fine-tuning pipeline is built to close that gap so the corrector runs on the phone.</p>
           <p class="impact es"><b>Resultado hasta ahora:</b> en mi examen de 304 frases, Qwen3-8B acierta el 83 % y los modelos pequeños solo entre 28 y 36 %. Mi flujo de ajuste fino con LoRA busca cerrar esa brecha para que el corrector corra en el teléfono.</p>
           <div class="chips"><span>Python</span><span>PyTorch</span><span>Qwen3</span><span>LoRA</span><span>GGUF</span></div>
@@ -477,24 +495,10 @@
         <div class="card-body">
           <p class="tag"><span class="en">UNAM collaboration · Education</span><span class="es">Colaboración UNAM · Educación</span></p>
           <h3><span class="en">Digital learning environment</span><span class="es">Ambiente digital de aprendizaje</span></h3>
-          <p class="desc en">PAPIME 2026 project at the Faculty of Sciences: a digital learning environment for the Gender and Ethics course of the Biology program. I help configure and develop the platform and build its digital resources.</p>
-          <p class="desc es">Proyecto PAPIME 2026 en la Facultad de Ciencias: un ambiente digital de aprendizaje para la asignatura de Género y Ética de la licenciatura en Biología. Apoyo en la configuración y el desarrollo de la plataforma y en sus recursos digitales.</p>
+          <p class="desc en">Digital learning environment for the Gender and Ethics course of the Biology program. I configure and develop the platform and build its digital resources.</p>
+          <p class="desc es">Ambiente digital de aprendizaje para la asignatura de Género y Ética de Biología. Configuro y desarrollo la plataforma y creo sus recursos digitales.</p>
           <div class="chips"><span>E-learning</span><span><span class="en">Content design</span><span class="es">Diseño de contenidos</span></span><span><span class="en">Teamwork</span><span class="es">Trabajo en equipo</span></span></div>
           <div class="links"><span class="muted">UNAM · <span class="en">Faculty of Sciences</span><span class="es">Facultad de Ciencias</span></span></div>
-        </div>
-      </article>
-
-      <article class="card reveal" id="p-sia">
-        <div class="thumb"><div class="ph"><b>SIA · IFC UNAM</b></div></div>
-        <div class="card-body">
-          <p class="tag"><span class="en">UNAM collaboration · Backend</span><span class="es">Colaboración UNAM · Backend</span></p>
-          <h3><span class="en">SIA system backend</span><span class="es">Backend del sistema SIA</span></h3>
-          <p class="desc en">Backend of the SIA system at UNAM's Institute of Cellular Physiology (IFC): request logic and processing, plus the queries and database design behind them. Credited in the site's acknowledgments.</p>
-          <p class="desc es">Backend del sistema SIA del Instituto de Fisiología Celular (IFC) de la UNAM: la lógica y el procesamiento de las solicitudes, y las consultas y el diseño de la base de datos que las respaldan. Aparezco en los agradecimientos del sitio.</p>
-          <p class="impact en"><b>Why it matters:</b> a real system in production, not a class exercise. You can check it on the live site.</p>
-          <p class="impact es"><b>Por qué importa:</b> es un sistema real en producción, no un ejercicio de clase. Se puede comprobar en el sitio.</p>
-          <div class="chips"><span>Backend</span><span>SQL</span><span><span class="en">Database design</span><span class="es">Diseño de bases de datos</span></span></div>
-          <div class="links"><a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit site ↗</span><span class="es">Ver sitio ↗</span></a></div>
         </div>
       </article>
 
@@ -503,8 +507,8 @@
         <div class="card-body">
           <p class="tag"><span class="en">Team project · Scrum Master</span><span class="es">Proyecto en equipo · Scrum Master</span></p>
           <h3>Festival de las Luciérnagas</h3>
-          <p class="desc en">Full-stack reservation platform for cabins and campsites with an interactive map and admin dashboard. 5-person team, OWASP practices and automated emails.</p>
-          <p class="desc es">Plataforma full-stack de reservas de cabañas y campamentos con mapa interactivo y panel de administración. Equipo de 5 personas, prácticas OWASP y correos automáticos.</p>
+          <p class="desc en">Full-stack reservation platform for cabins and campsites, with an interactive map, admin dashboard, OWASP practices and automated emails.</p>
+          <p class="desc es">Plataforma full-stack de reservas de cabañas y campamentos, con mapa interactivo, panel de administración, prácticas OWASP y correos automáticos.</p>
           <p class="impact en"><b>My role:</b> Scrum Master (weekly sprints for 5 people) and developer of the platform over a 10-table PostgreSQL schema with government datasets.</p>
           <p class="impact es"><b>Mi papel:</b> Scrum Master (sprints semanales de 5 personas) y desarrollador de la plataforma sobre un esquema de 10 tablas en PostgreSQL con datos de gobierno.</p>
           <div class="chips"><span>Django</span><span>PostgreSQL</span><span>Leaflet</span></div>
@@ -517,8 +521,8 @@
         <div class="card-body">
           <p class="tag"><span class="en">Personal project · Local AI</span><span class="es">Proyecto personal · IA local</span></p>
           <h3><span class="en">Local AI Agent</span><span class="es">Agente de IA local</span></h3>
-          <p class="desc en">Assistant that runs 100% locally and automates tasks from natural language: projects, notes and calendar events, with voice and vision. 10 open models benchmarked.</p>
-          <p class="desc es">Asistente que corre 100 % en local y automatiza tareas con lenguaje natural: proyectos, notas y eventos de calendario, con voz y visión. 10 modelos abiertos comparados.</p>
+          <p class="desc en">Assistant that runs 100% locally and turns text or voice requests into projects, notes and calendar events.</p>
+          <p class="desc es">Asistente que corre 100 % en local y convierte peticiones de texto o voz en proyectos, notas y eventos de calendario.</p>
           <p class="impact en"><b>Result:</b> compared latency, resource use and output quality of 10 models on Linux, Windows and macOS to choose the best one for each machine.</p>
           <p class="impact es"><b>Resultado:</b> comparé la latencia, el uso de recursos y la calidad de 10 modelos en Linux, Windows y macOS para elegir el mejor en cada equipo.</p>
           <div class="chips"><span>Ollama</span><span>Python</span><span>Vosk</span></div>
@@ -531,8 +535,8 @@
         <div class="card-body">
           <p class="tag"><span class="en">Parallel computing</span><span class="es">Cómputo paralelo</span></p>
           <h3><span class="en">Parallel Matrix Multiplication</span><span class="es">Multiplicación de matrices en paralelo</span></h3>
-          <p class="desc en">Matrix multiplication with MPI in C, with uneven row distribution, correctness checks and a benchmark: up to 1.8x on a 4-core laptop, where scaling is limited by memory bandwidth.</p>
-          <p class="desc es">Multiplicación de matrices con MPI en C, con reparto de filas no exacto, verificación automática y benchmark: hasta 1.8 veces más rápida en una laptop de 4 núcleos, donde el límite es el ancho de banda de memoria.</p>
+          <p class="desc en">Matrix multiplication in C with MPI: uneven row splits, correctness checks and a benchmark. Up to 1.8x faster on a 4-core laptop.</p>
+          <p class="desc es">Multiplicación de matrices en C con MPI: reparto de filas no exacto, verificación automática y benchmark. Hasta 1.8 veces más rápida en 4 núcleos.</p>
           <p class="impact en"><b>What I learned:</b> adding processes stops paying off once memory bandwidth, not the CPU, becomes the bottleneck.</p>
           <p class="impact es"><b>Lo que aprendí:</b> sumar procesos deja de rendir cuando el cuello de botella es el ancho de banda de memoria y no el CPU.</p>
           <div class="chips"><span>C</span><span>MPI</span><span>Python</span></div>
@@ -692,6 +696,7 @@
     <a class="brand" href="#top">Aaron López</a>
     <div class="foot-help">
       <b><span class="en">Let's talk</span><span class="es">Hablemos</span></b>
+      <p><span class="en">Open to internships and junior backend / full-stack roles.</span><span class="es">Busco prácticas profesionales o un puesto junior de backend o full-stack.</span></p>
       <a href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a>
       <p><span class="en">Mexico City</span><span class="es">Ciudad de México</span></p>
     </div>
