@@ -87,8 +87,8 @@
   .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
   .hero-text{grid-column:1 / 8;padding:88px 0 64px}
   .hero-photo{
-    grid-column:9 / 13;margin-top:72px;margin-bottom:-32px;
-    aspect-ratio:1 / 1;position:relative;overflow:hidden;background:var(--ph);
+    grid-column:8 / 13;margin-top:64px;margin-bottom:-56px;
+    aspect-ratio:5 / 6;position:relative;overflow:hidden;background:var(--ph);
   }
   .hero-photo::before,.hero-photo::after{content:"";position:absolute;left:50%;background:var(--sil)}
   .hero-photo::before{width:34%;aspect-ratio:1;border-radius:50%;top:25%;transform:translateX(-50%)}
@@ -113,7 +113,7 @@
 
   /* ---------- 3. "now" notice ---------- */
   .now{
-    margin-top:88px;border:1.5px solid var(--ink);border-radius:var(--radius);
+    margin-top:104px;border:1.5px solid var(--ink);border-radius:var(--radius);
     display:flex;align-items:center;gap:20px;padding:20px 24px;
   }
   .now-dot{flex:0 0 28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);
@@ -234,8 +234,9 @@
     .topbar-inner{height:72px;gap:12px}
     .nav-links,.topbar .gh{display:none}
     .menu-btn{display:inline-flex}
-    .hero-text{grid-column:1 / 9;padding:48px 0 48px}
-    .hero-photo{grid-column:9 / 13;margin:56px 0 40px;aspect-ratio:1 / 1}
+    .hero-text{grid-column:1 / 8;padding:48px 0 48px}
+    .hero-photo{grid-column:8 / 13;margin:48px 0 40px;aspect-ratio:4 / 5}
+    .now{margin-top:48px}
     .projects{grid-template-columns:repeat(2,1fr)}
     .stats{grid-template-columns:repeat(2,1fr)}
     .tl-item{grid-template-columns:100px var(--gap) 1fr}
@@ -253,7 +254,7 @@
     .topbar .fontsize{display:none}
     .menu-btn{padding:0 12px}
     .hero-text{grid-column:1 / -1;padding:24px 0 40px}
-    .hero-photo{grid-column:1 / -1;grid-row:1;margin:24px 0 0;aspect-ratio:1 / 1;width:180px}
+    .hero-photo{grid-column:1 / -1;grid-row:1;margin:24px 0 0;aspect-ratio:1 / 1;width:240px}
     .actions .btn{flex:1 1 100%}
     .now{margin-top:24px;align-items:flex-start;flex-wrap:wrap;padding:18px}
     .now p{flex:1 1 calc(100% - 48px)}
