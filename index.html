@@ -1,469 +1,836 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aaron López Mendoza — Portfolio</title>
+<meta name="description" content="Aaron López Mendoza — Computer Science student at UNAM. Full-stack software, databases and local AI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* =========================================================
+     Black & white design, based on the "portal" template:
+     12-column grid · gray bands · large type · big targets
+     Bilingual: every text has an .en and an .es version.
+     ========================================================= */
   :root{
-    --paper:#ECEEF0;
-    --card:#FFFFFF;
-    --ink:#15202B;
-    --muted:#5A6672;
-    --accent:#0F766E;
-    --accent-soft:rgba(15,118,110,.10);
-    --line:#D7DCE0;
-    --display:"IBM Plex Serif",Georgia,serif;
-    --body:"IBM Plex Sans",sans-serif;
-    --mono:"IBM Plex Mono",monospace;
-    --maxw:1080px;
+    --ink:#000000;
+    --paper:#FFFFFF;
+    --band:#F2F2F2;
+    --ph:#D9D9D9;        /* image placeholders */
+    --sil:#BDBDBD;       /* silhouettes / X on placeholders */
+    --line:#A6A6A6;      /* card borders */
+    --soft:#D4D4D4;      /* thin dividers */
+    --muted:#6B6B6B;     /* secondary text (5.3:1 on white) */
+    --gap:24px;
+    --maxw:1200px;
+    --radius:8px;
   }
+  html[data-lang="en"] .es,html[data-lang="es"] .en{display:none!important}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;font-size:17px}
+  html{font-size:17px;scroll-behavior:smooth}
   body{
-    font-family:var(--body);
-    background:var(--paper);
-    color:var(--ink);
-    line-height:1.6;
-    letter-spacing:.005em;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    font-family:"Inter",Arial,sans-serif;
+    background:var(--paper);color:var(--ink);
+    line-height:1.55;-webkit-font-smoothing:antialiased;
   }
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  button{font:inherit;color:inherit;cursor:pointer}
+  :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+  .wrap{max-width:calc(var(--maxw) + 48px);margin:0 auto;padding:0 24px}
 
-  /* eyebrow / mono labels */
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:.78rem;
-    letter-spacing:.04em;
-    color:var(--accent);
-    text-transform:uppercase;
-    margin-bottom:14px;
-  }
-
-  /* ---------- Nav ---------- */
-  nav{
-    position:sticky;top:0;z-index:50;
-    background:rgba(236,238,240,.82);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .nav-name{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:0}
-  .nav-links{display:flex;gap:26px;align-items:center}
-  .nav-links a{font-size:.9rem;color:var(--muted);transition:color .2s}
-  .nav-links a:hover{color:var(--ink)}
-  .nav-links .pill{
-    font-family:var(--mono);font-size:.8rem;
-    border:1px solid var(--ink);border-radius:2px;
-    padding:6px 12px;color:var(--ink);transition:.2s;
-  }
-  .nav-links .pill:hover{background:var(--ink);color:var(--paper)}
-  @media(max-width:640px){.nav-links a:not(.pill){display:none}}
-
-  /* ---------- Hero ---------- */
-  header.hero{
-    position:relative;
-    padding:92px 0 76px;
-    border-bottom:1px solid var(--line);
-    overflow:hidden;
-  }
-  /* blueprint grid backdrop */
-  header.hero::before{
-    content:"";position:absolute;inset:0;
-    background-image:
-      linear-gradient(var(--line) 1px,transparent 1px),
-      linear-gradient(90deg,var(--line) 1px,transparent 1px);
-    background-size:46px 46px;
-    opacity:.35;
-    -webkit-mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000,transparent 75%);
-            mask-image:radial-gradient(ellipse 70% 80% at 70% 30%,#000,transparent 75%);
-  }
-  .hero-content{position:relative;max-width:760px}
-
-  /* ---------- Profile intro (avatar + name) ---------- */
-  .profile-intro{
-    display:flex;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:38px;
-  }
-  .avatar{
-    width:84px;height:84px;
-    border-radius:50%;
-    flex-shrink:0;
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(135deg,#13413c,#0F766E 60%,#16A394);
-    border:1px solid var(--line);
-  }
-  .avatar::after{
-    content:"";position:absolute;inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
-    background-size:14px 14px;
-  }
-  .avatar span{
-    position:absolute;inset:0;z-index:1;
-    display:flex;align-items:center;justify-content:center;
-    font-family:var(--mono);font-size:.62rem;line-height:1.35;
-    color:rgba(255,255,255,.9);
-    text-align:center;padding:6px;
-  }
-  .avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
-  .profile-text{padding-top:6px}
-  .profile-name{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.004em}
-  .profile-meta{font-family:var(--mono);font-size:.82rem;color:var(--muted);margin-top:5px}
-  @media(max-width:480px){
-    .profile-intro{gap:14px}
-    .avatar{width:68px;height:68px}
-  }
-  h1{
-    font-family:var(--display);
-    font-weight:600;
-    font-size:clamp(2.5rem,6vw,4.3rem);
-    line-height:1.08;
-    letter-spacing:-.012em;
-    margin-bottom:22px;
-  }
-  h1 .accent{color:var(--accent)}
-  .lede{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--muted);max-width:580px;margin-bottom:34px}
-  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  /* ---------- buttons ---------- */
   .btn{
-    font-family:var(--mono);font-size:.88rem;
-    padding:12px 20px;border-radius:2px;transition:.2s;
-    display:inline-flex;align-items:center;gap:8px;
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    min-height:56px;padding:0 24px;border-radius:var(--radius);
+    font-weight:600;font-size:.94rem;text-decoration:none;
+    border:1.5px solid var(--ink);transition:background .2s,color .2s;
   }
   .btn-solid{background:var(--ink);color:var(--paper)}
-  .btn-solid:hover{background:var(--accent)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:var(--card)}
-  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-solid:hover{background:#333;border-color:#333}
+  .btn-ghost{background:var(--paper);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-sm{min-height:40px;padding:0 16px;font-size:.88rem}
 
-  /* ---------- Section frame ---------- */
-  section{padding:78px 0;border-bottom:1px solid var(--line)}
-  .sec-head{margin-bottom:42px}
-  .sec-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3.5vw,2.2rem);line-height:1.25;letter-spacing:-.008em}
-  .sec-head p{color:var(--muted);margin-top:8px;max-width:560px}
+  /* ---------- 1. top bar ---------- */
+  .topbar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--soft)}
+  .topbar-inner{display:flex;align-items:center;gap:20px;height:80px}
+  .brand{font-weight:700;font-size:1.15rem;text-decoration:none;letter-spacing:-.01em;margin-right:auto;white-space:nowrap}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{font-weight:500;font-size:.94rem;text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
+  .nav-links a:hover,.nav-links a[aria-current]{border-color:var(--ink)}
+  .nav-links a[aria-current]{font-weight:700}
+  .seg{display:flex;gap:4px}
+  .seg button{
+    min-width:40px;height:40px;padding:0 8px;border:1.5px solid var(--ink);border-radius:var(--radius);
+    background:var(--paper);font-weight:700;font-size:.88rem;
+  }
+  .seg button:hover{background:#333;color:var(--paper);border-color:#333}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .fontsize button:first-child{font-size:.85rem}
+  .fontsize button:last-child{font-size:1.05rem}
+  .menu-btn{
+    display:none;align-items:center;gap:10px;height:44px;padding:0 16px;
+    border:1.5px solid var(--ink);border-radius:var(--radius);background:var(--paper);font-weight:600;
+  }
+  .menu-btn .bars{display:grid;gap:4px}
+  .menu-btn .bars i{display:block;width:18px;height:2px;background:var(--ink)}
+  .menu-panel{display:none;border-top:1px solid var(--soft);background:var(--paper)}
+  .menu-panel.open{display:block}
+  .menu-panel a{display:block;padding:16px 0;font-size:1.05rem;font-weight:600;text-decoration:none;border-bottom:1px solid var(--soft)}
+  .menu-panel .fontsize{padding:16px 0}
 
-  /* ---------- Projects ---------- */
-  .grid{display:grid;gap:26px;grid-template-columns:repeat(2,1fr)}
-  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  /* ---------- 2. profile band ---------- */
+  .hero{background:var(--band);position:relative}
+  .hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
+  .hero-text{grid-column:1 / 7;padding:88px 0 64px}
+  .hero-photo{
+    grid-column:7 / 13;margin-top:40px;margin-bottom:-40px;
+    aspect-ratio:49 / 50;position:relative;overflow:hidden;background:var(--ph);
+  }
+  .hero-photo::before,.hero-photo::after{content:"";position:absolute;left:50%;background:var(--sil)}
+  .hero-photo::before{width:34%;aspect-ratio:1;border-radius:50%;top:25%;transform:translateX(-50%)}
+  .hero-photo::after{width:72%;height:72%;border-radius:50%;top:66%;transform:translateX(-50%)}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;z-index:1}
+  .vlabel{
+    position:absolute;left:calc((100vw - var(--maxw)) / 4);top:50%;
+    transform:translate(-50%,-50%) rotate(-90deg);
+    font-size:.7rem;font-weight:600;letter-spacing:.18em;color:var(--muted);white-space:nowrap;
+  }
+  @media(max-width:1359px){.vlabel{display:none}}
+  .eyebrow{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  h1{font-size:clamp(1.8rem,4.2vw,2.85rem);line-height:1.15;letter-spacing:-.015em;margin-bottom:18px}
+  .role{font-size:1.3rem;font-weight:500;margin-bottom:14px}
+  .place{font-size:1.05rem;font-weight:500}
+  .place-sub{color:var(--muted);font-size:.94rem;margin-bottom:22px}
+  .contact-lines{font-size:.94rem;margin-bottom:36px}
+  .contact-lines a{text-decoration:none;border-bottom:1px solid var(--soft)}
+  .contact-lines a:hover{border-color:var(--ink)}
+  .contact-lines .muted{color:var(--muted)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  /* ---------- 3. "now" notice ---------- */
+  .now{
+    margin-top:88px;border:1.5px solid var(--ink);border-radius:var(--radius);
+    display:flex;align-items:center;gap:20px;padding:20px 24px;
+  }
+  .now-dot{flex:0 0 28px;height:28px;border-radius:50%;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;font-weight:700;font-size:.8rem}
+  .now p{flex:1;font-size:.94rem}
+  .now a{font-weight:700;white-space:nowrap;text-decoration:none}
+  .now a:hover{text-decoration:underline}
+
+  /* ---------- sections ---------- */
+  section{padding-top:72px}
+  .sec-head{margin-bottom:28px}
+  h2{font-size:1.65rem;line-height:1.25;letter-spacing:-.01em}
+  .sec-head p{color:var(--muted);font-size:.94rem;margin-top:6px}
+
+  /* ---------- 4. projects ---------- */
+  .projects{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
   .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:6px;
-    overflow:hidden;
-    display:flex;flex-direction:column;
-    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper);
+    display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px -18px rgba(21,32,43,.4);border-color:#C2C9CF}
-  .card.featured{grid-column:1 / -1}
-  .card.featured .shot{aspect-ratio:12 / 5}
-  @media(max-width:760px){.card.featured .shot{aspect-ratio:16 / 10}}
-
-  /* screenshot area (replace with <img> — see comments below) */
-  .shot{
-    position:relative;
-    aspect-ratio:16/10;
+  .card:hover{transform:translateY(-3px);box-shadow:0 12px 28px -16px rgba(0,0,0,.45)}
+  .thumb{aspect-ratio:16 / 9;background:var(--band);position:relative;overflow:hidden;border-bottom:1px solid var(--soft)}
+  .thumb img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .3s}
+  .thumb.contain img{object-fit:contain}
+  .card:hover .thumb img,.news-card:hover .thumb img{filter:none}
+  .ph{
+    position:absolute;inset:0;display:grid;place-items:center;
     background:
-      linear-gradient(135deg,#13413c,#0F766E 60%,#16A394);
-    display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
+      linear-gradient(to top right,transparent calc(50% - 1px),var(--sil) 50%,transparent calc(50% + 1px)),
+      linear-gradient(to bottom right,transparent calc(50% - 1px),var(--sil) 50%,transparent calc(50% + 1px)),
+      var(--ph);
   }
-  .shot::after{
-    content:"";position:absolute;inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
-    background-size:30px 30px;
+  .ph b{background:var(--paper);font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:20px;letter-spacing:.02em}
+  .card-body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .tag{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .card h3{font-size:1.05rem;line-height:1.3;margin-bottom:8px;display:flex;justify-content:space-between;gap:10px}
+  .card h3::after{content:"→";font-weight:600}
+  .card .desc{color:var(--muted);font-size:.86rem;flex:1;margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+  .chips span{font-size:.68rem;font-weight:600;border:1px solid var(--soft);border-radius:20px;padding:3px 9px}
+  .links{display:flex;flex-wrap:wrap;gap:16px;font-size:.86rem;font-weight:600}
+  .links .muted{color:var(--muted);font-weight:500}
+  .card.more{justify-content:center;align-items:flex-start;padding:28px;background:var(--band);border-style:dashed;text-decoration:none}
+  .card.more h3{font-size:1.15rem;width:100%}
+  .card.more p{color:var(--muted);font-size:.86rem}
+
+  /* ---------- 5. journey ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:32px}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px 24px 20px}
+  .stat b{display:block;font-size:2.35rem;line-height:1.15;letter-spacing:-.02em}
+  .stat > span{color:var(--muted);font-size:.88rem}
+  .filters{display:flex;gap:12px;margin-bottom:32px;overflow-x:auto;padding:4px 2px;scrollbar-width:none}
+  .filters button{
+    flex:0 0 auto;height:40px;padding:0 20px;border-radius:20px;
+    border:1.5px solid var(--ink);background:var(--paper);font-weight:600;font-size:.88rem;
   }
-  .shot span{
-    position:relative;z-index:1;
-    font-family:var(--mono);font-size:.78rem;
-    color:rgba(255,255,255,.85);
-    border:1px dashed rgba(255,255,255,.5);
-    padding:8px 14px;border-radius:3px;
-    text-align:center;
+  .filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+  .tl{list-style:none}
+  .tl-item{display:grid;grid-template-columns:78px var(--gap) 1fr;margin-bottom:24px}
+  .tl-item[hidden]{display:none}
+  .tl-year{font-size:1.65rem;font-weight:700;line-height:1;padding-top:12px}
+  .tl-rail{position:relative}
+  .tl-rail::before{content:"";position:absolute;left:50%;top:24px;bottom:-48px;width:2px;margin-left:-1px;background:var(--ink)}
+  .tl-item.last .tl-rail::before{display:none}
+  .tl-rail::after{content:"";position:absolute;left:50%;top:24px;width:14px;height:14px;margin:-7px 0 0 -7px;
+    border-radius:50%;background:var(--ink);box-shadow:0 0 0 3px var(--paper)}
+  .tl-card{border:1px solid var(--line);border-radius:var(--radius);padding:18px 24px}
+  .tl-card .tag{margin-bottom:4px}
+  .tl-card h3{font-size:1.1rem;line-height:1.35}
+  .tl-card p:not(.tag){color:var(--muted);font-size:.88rem}
+  .tl-card a{color:var(--ink);font-weight:600}
+  .tl-card .year-in{display:none}
+
+  /* ---------- 6. news carousel ---------- */
+  .news{background:var(--band);margin-top:80px;padding:64px 0 48px}
+  .news-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px}
+  .news-head p{color:var(--muted);font-size:.94rem;margin-top:6px}
+  .controls{display:flex;gap:12px;flex:0 0 auto}
+  .controls button{
+    height:48px;min-width:48px;border:1.5px solid var(--ink);border-radius:var(--radius);
+    background:var(--paper);font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;
   }
-  .shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
-  /* variante: imagen completa sin recortar (para capturas verticales/chat) */
-  .shot.shot-contain{aspect-ratio:4 / 3;background:#1b2330}
-  .shot.shot-contain img{object-fit:contain}
-  @media(max-width:760px){.shot.shot-contain{aspect-ratio:4 / 3}}
-  /* variante: captura ancha completa sin recortar (tablero/landscape) */
-  .shot.shot-wide{aspect-ratio:2 / 1;background:#0d1524}
-  .shot.shot-wide img{object-fit:contain}
-
-  .card-body{padding:26px 26px 24px;display:flex;flex-direction:column;flex:1}
-  .card-tag{font-family:var(--mono);font-size:.74rem;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
-  .card h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.3;letter-spacing:-.004em;margin-bottom:10px}
-  .card p.desc{color:var(--muted);font-size:.96rem;margin-bottom:18px;flex:1}
-  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
-  .stack span{
-    font-family:var(--mono);font-size:.72rem;
-    background:var(--accent-soft);color:var(--accent);
-    padding:4px 9px;border-radius:3px;
+  .controls button:hover{background:var(--ink);color:var(--paper)}
+  .controls .pause{min-width:150px}
+  .pause-ico{display:inline-flex;gap:4px}
+  .pause-ico i{display:block;width:5px;height:16px;background:currentColor}
+  .play-ico{display:none;width:0;height:0;border-left:13px solid currentColor;border-top:8px solid transparent;border-bottom:8px solid transparent}
+  .paused .pause-ico{display:none}
+  .paused .play-ico{display:inline-block}
+  .viewport{overflow:hidden}
+  .track{display:flex;gap:var(--gap);transition:transform .6s ease}
+  .news-card{
+    flex:0 0 calc((100% - 2 * var(--gap)) / 3);
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;
   }
-  .card-links{display:flex;gap:18px;font-family:var(--mono);font-size:.84rem}
-  .card-links a{color:var(--ink);border-bottom:1px solid transparent;transition:.2s;padding-bottom:2px}
-  .card-links a:hover{border-color:var(--accent);color:var(--accent)}
-  .card-links a.muted{color:var(--muted)}
+  .news-card .body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .news-card h3{font-size:1.05rem;line-height:1.35;margin-bottom:8px}
+  .news-card .body > p:not(.tag){color:var(--muted);font-size:.86rem;flex:1;margin-bottom:16px}
+  .news-card .body > a{font-weight:600;font-size:.94rem}
+  .dots{display:flex;justify-content:center;gap:10px;margin-top:32px}
+  .dots button{width:10px;height:10px;border-radius:5px;border:0;background:var(--sil);padding:0;transition:width .3s}
+  .dots button[aria-current="true"]{width:28px;background:var(--ink)}
 
-  /* ---------- Skills ---------- */
-  .skills{display:grid;gap:22px;grid-template-columns:repeat(2,1fr)}
-  @media(max-width:640px){.skills{grid-template-columns:1fr}}
-  .skill-row{border-top:1px solid var(--line);padding-top:16px}
-  .skill-row h4{font-family:var(--mono);font-size:.82rem;color:var(--accent);text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}
-  .skill-row p{font-size:.98rem}
+  /* ---------- 7. footer ---------- */
+  footer{background:var(--ink);color:var(--paper);padding:48px 0}
+  .foot{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap)}
+  .foot .brand{grid-column:1 / 4;color:var(--paper)}
+  .foot-help{grid-column:5 / 9}
+  .foot-links{grid-column:9 / 13}
+  .foot b{display:block;font-size:1.05rem;margin-bottom:6px}
+  .foot p,.foot a{font-size:.94rem;color:#BFBFBF;text-decoration:none;display:block;line-height:1.75}
+  .foot a:hover{color:var(--paper);text-decoration:underline}
+  .foot-links a{color:var(--paper)}
 
-  /* ---------- Contact ---------- */
-  .contact-inner{max-width:620px}
-  .contact-inner h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.2;letter-spacing:-.01em;margin-bottom:16px}
-  .contact-inner p{color:var(--muted);margin-bottom:28px}
-  footer{padding:34px 0;color:var(--muted);font-family:var(--mono);font-size:.8rem}
-  .foot-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  /* ---------- tablet (768–1023) ---------- */
+  @media(max-width:1023px){
+    .topbar-inner{height:72px;gap:12px}
+    .nav-links,.topbar .gh{display:none}
+    .menu-btn{display:inline-flex}
+    .hero-text{grid-column:1 / 8;padding:48px 0 48px}
+    .hero-photo{grid-column:8 / 13;margin:40px 0;aspect-ratio:4 / 5}
+    .projects{grid-template-columns:repeat(2,1fr)}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .tl-item{grid-template-columns:100px var(--gap) 1fr}
+    .news-card{flex-basis:calc((100% - var(--gap)) / 2)}
+    .foot .brand{grid-column:1 / -1}
+    .foot-help{grid-column:1 / 7}
+    .foot-links{grid-column:7 / 13}
+  }
+  /* ---------- phone (< 768) ---------- */
+  @media(max-width:767px){
+    :root{--gap:16px}
+    html{font-size:16px}
+    .wrap{padding:0 15px}
+    .topbar-inner{height:64px;gap:8px}
+    .topbar .fontsize{display:none}
+    .menu-btn{padding:0 12px}
+    .hero-text{grid-column:1 / -1;padding:24px 0 40px}
+    .hero-photo{grid-column:1 / -1;grid-row:1;margin:24px 0 0;aspect-ratio:1 / 1}
+    .actions .btn{flex:1 1 100%}
+    .now{margin-top:24px;align-items:flex-start;flex-wrap:wrap;padding:18px}
+    .now p{flex:1 1 calc(100% - 48px)}
+    .now a{margin-left:48px}
+    .projects{grid-template-columns:1fr}
+    .stat{padding:14px 16px}
+    .stat b{font-size:2rem}
+    .tl-item{grid-template-columns:16px 15px 1fr}
+    .tl-year{display:none}
+    .tl-rail{grid-column:1}
+    .tl-card{grid-column:3;padding:16px}
+    .tl-card .year-in{display:block;font-size:1.2rem;font-weight:700;margin-bottom:2px}
+    .news-head{flex-direction:column;align-items:stretch}
+    .controls .pause{margin-right:auto}
+    .news-card{flex-basis:100%}
+    .foot-help,.foot-links{grid-column:1 / -1}
+    .btn-wide{width:100%}
+  }
+  @media(max-width:359px){.brand{font-size:1rem}}
+  @media(min-width:768px){.menu-panel .fontsize{display:none}}
+  @media(min-width:1024px){.menu-panel{display:none!important}}
 
-  /* reveal animation */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.in{opacity:1;transform:none}
+  /* subtle reveal (only with JS, skipped when the user prefers less motion) */
+  html.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  html.js .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){
-    .reveal{opacity:1;transform:none;transition:none}
     html{scroll-behavior:auto}
+    html.js .reveal{opacity:1;transform:none;transition:none}
+    .card,.track,.dots button,.thumb img{transition:none}
     .card:hover{transform:none}
   }
-  :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 </style>
 </head>
 <body>
 
-<nav>
-  <div class="wrap nav-inner">
-    <span class="nav-name">Aaron López</span>
-    <div class="nav-links">
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <a class="pill" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
+<!-- ================= 1. TOP BAR ================= -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top">Aaron López</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#top" aria-current="page"><span class="en">Home</span><span class="es">Inicio</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+      <a href="#journey"><span class="en">Journey</span><span class="es">Trayectoria</span></a>
+      <a href="#news"><span class="en">News</span><span class="es">Noticias</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+    </nav>
+    <div class="seg fontsize" role="group" aria-label="Text size">
+      <button type="button" data-font="-1" data-aria-en="Smaller text" data-aria-es="Letra más pequeña">A−</button>
+      <button type="button" data-font="1" data-aria-en="Larger text" data-aria-es="Letra más grande">A+</button>
     </div>
+    <div class="seg lang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-setlang="es" lang="es" aria-pressed="false" aria-label="Español">ES</button>
+      <button type="button" data-setlang="en" lang="en" aria-pressed="true" aria-label="English">EN</button>
+    </div>
+    <a class="btn btn-ghost btn-sm gh" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span class="en">Menu</span><span class="es">Menú</span>
+    </button>
   </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap hero-content">
-    <div class="profile-intro reveal">
-      <div class="avatar">
-        <!-- Replace this placeholder with your photo:
-             <img src="img/photo.jpg" alt="Photo of Aaron López Mendoza"> -->
-        <span>Your photo here</span>
+  <div class="menu-panel" id="menu">
+    <div class="wrap">
+      <a href="#projects"><span class="en">Projects</span><span class="es">Proyectos</span></a>
+      <a href="#journey"><span class="en">Journey</span><span class="es">Trayectoria</span></a>
+      <a href="#news"><span class="en">News</span><span class="es">Noticias</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a>
+      <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
+      <div class="seg fontsize" role="group" aria-label="Text size">
+        <button type="button" data-font="-1" data-aria-en="Smaller text" data-aria-es="Letra más pequeña">A−</button>
+        <button type="button" data-font="1" data-aria-en="Larger text" data-aria-es="Letra más grande">A+</button>
       </div>
-      <div class="profile-text">
-        <p class="profile-name">Aaron López Mendoza</p>
-        <p class="profile-meta">Mexico City · alopez250405@gmail.com</p>
-      </div>
-    </div>
-    <p class="eyebrow">// Portfolio</p>
-    <h1>I build full-stack<br><span class="accent">software & systems</span></h1>
-    <p class="lede">Computer Science student at UNAM. I work on web development, databases, and local AI, with a focus on security and good engineering practices.</p>
-    <div class="hero-actions">
-      <a class="btn btn-solid" href="#projects">View projects</a>
-      <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
-      <!-- For your resume: upload your PDF to the repo (e.g. cv.pdf) and keep the href below -->
-      <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener">Download resume</a>
     </div>
   </div>
 </header>
 
-<!-- =================== PROYECTOS =================== -->
-<section id="projects">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">// Projects</p>
-      <h2>Things I've built</h2>
-      <p>A selection of academic and personal projects. Full code is on GitHub.</p>
+<main id="top">
+
+<!-- ================= 2. PROFILE ================= -->
+<section class="hero" style="padding-top:0" aria-labelledby="name">
+  <span class="vlabel" aria-hidden="true"><span class="en">PORTFOLIO</span><span class="es">PORTAFOLIO</span> · AARON LÓPEZ</span>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="en">Portfolio · Computer Science · UNAM</span><span class="es">Portafolio · Ciencias de la Computación · UNAM</span></p>
+      <h1 id="name">Aaron<br>López Mendoza</h1>
+      <p class="role"><span class="en">Full-Stack Software Engineer</span><span class="es">Ingeniero de software full-stack</span></p>
+      <p class="place"><span class="en">B.Sc. in Computer Science, Faculty of Sciences, UNAM</span><span class="es">Lic. en Ciencias de la Computación, Facultad de Ciencias, UNAM</span></p>
+      <p class="place-sub"><span class="en">Mexico City · Databases · Local AI · Linux</span><span class="es">Ciudad de México · Bases de datos · IA local · Linux</span></p>
+      <p class="contact-lines">
+        <a href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a><br>
+        <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">github.com/Aaronlm25</a> ·
+        <a href="https://linkedin.com/in/aaron-lopez-mendoza-7349103a6" target="_blank" rel="noopener">LinkedIn</a><br>
+        <span class="muted"><span class="en">Graduating June 2027 · GPA 9.25/10</span><span class="es">Egreso en junio de 2027 · Promedio 9.25/10</span></span>
+      </p>
+      <div class="actions">
+        <a class="btn btn-solid" href="#projects"><span class="en">View my projects</span><span class="es">Ver mis proyectos</span></a>
+        <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noopener"><span class="en">Download my CV</span><span class="es">Descargar mi CV</span></a>
+      </div>
     </div>
+    <div class="hero-photo">
+      <img src="img/foto.jpg" alt="Aaron López Mendoza" onerror="this.remove()">
+    </div>
+  </div>
+</section>
 
-    <div class="grid">
+<div class="wrap">
 
-      <!-- ===== PROYECTO DESTACADO: Festival ===== -->
-      <article class="card featured reveal">
-        <div class="shot">
-          <img src="img/festival.png" alt="Festival de las Luciérnagas — mapa interactivo">
-        </div>
+  <!-- ================= 3. NOW ================= -->
+  <div class="now reveal" role="note">
+    <span class="now-dot" aria-hidden="true">!</span>
+    <p class="en"><b>Right now:</b> collaborating on a <b>PAPIME</b> project at UNAM and building <b>Syntax</b>, my English-learning app for Android.</p>
+    <p class="es"><b>Ahora mismo:</b> colaboro en un proyecto <b>PAPIME</b> de la UNAM y desarrollo <b>Syntax</b>, mi app para aprender inglés en Android.</p>
+    <a href="#p-papime"><span class="en">See more →</span><span class="es">Ver más →</span></a>
+  </div>
+
+  <!-- ================= 4. PROJECTS ================= -->
+  <section id="projects">
+    <div class="sec-head reveal">
+      <h2><span class="en">What I've built</span><span class="es">Lo que he construido</span></h2>
+      <p><span class="en">Projects, collaborations and activities. Public code is on GitHub.</span><span class="es">Proyectos, colaboraciones y actividades. El código público está en GitHub.</span></p>
+    </div>
+    <div class="projects">
+
+      <article class="card reveal" id="p-syntax">
+        <div class="thumb"><div class="ph"><b>Syntax</b></div></div>
         <div class="card-body">
-          <p class="card-tag">Featured · Team project</p>
+          <p class="tag"><span class="en">New · Personal project</span><span class="es">Nuevo · Proyecto personal</span></p>
+          <h3><span class="en">Syntax — English app</span><span class="es">Syntax — app de inglés</span></h3>
+          <p class="desc en">Android app to practice English grammar and vocabulary: a library of book-based paths, written exercises checked by AI, and TOEFL, IELTS and TOEIC practice.</p>
+          <p class="desc es">App de Android para practicar gramática y vocabulario en inglés: biblioteca de rutas basadas en libros, ejercicios escritos revisados con IA y práctica para TOEFL, IELTS y TOEIC.</p>
+          <div class="chips"><span>React Native</span><span>Expo</span><span>TypeScript</span><span>Kotlin</span><span>SQLite</span></div>
+          <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="p-llm">
+        <div class="thumb"><div class="ph"><b>LLM</b></div></div>
+        <div class="card-body">
+          <p class="tag"><span class="en">New · AI</span><span class="es">Nuevo · IA</span></p>
+          <h3><span class="en">My own language model</span><span class="es">Mi propio modelo de lenguaje</span></h3>
+          <p class="desc en">A small GPT built and trained from scratch to understand how LLMs work, now evolving into an offline English corrector that runs inside the phone.</p>
+          <p class="desc es">Un GPT pequeño construido y entrenado desde cero para entender cómo funcionan los LLM, que ahora se convierte en un corrector de inglés sin internet dentro del teléfono.</p>
+          <div class="chips"><span>Python</span><span>PyTorch</span><span>Qwen3</span><span>GGUF</span></div>
+          <div class="links"><span class="muted"><span class="en">Private repository</span><span class="es">Repositorio privado</span></span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="p-papime">
+        <div class="thumb"><div class="ph"><b>PAPIME 2026</b></div></div>
+        <div class="card-body">
+          <p class="tag"><span class="en">UNAM collaboration · Education</span><span class="es">Colaboración UNAM · Educación</span></p>
+          <h3><span class="en">Digital learning environment</span><span class="es">Ambiente digital de aprendizaje</span></h3>
+          <p class="desc en">PAPIME 2026 project at the Faculty of Sciences: a digital learning environment for the Gender and Ethics course of the Biology program. I help configure and develop the platform and build its digital resources.</p>
+          <p class="desc es">Proyecto PAPIME 2026 en la Facultad de Ciencias: un ambiente digital de aprendizaje para la asignatura de Género y Ética de la licenciatura en Biología. Apoyo en la configuración y el desarrollo de la plataforma y en sus recursos digitales.</p>
+          <div class="chips"><span>E-learning</span><span><span class="en">Content design</span><span class="es">Diseño de contenidos</span></span><span><span class="en">Teamwork</span><span class="es">Trabajo en equipo</span></span></div>
+          <div class="links"><span class="muted">UNAM · <span class="en">Faculty of Sciences</span><span class="es">Facultad de Ciencias</span></span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="p-sia">
+        <div class="thumb"><div class="ph"><b>SIA · IFC UNAM</b></div></div>
+        <div class="card-body">
+          <p class="tag"><span class="en">UNAM collaboration · Web</span><span class="es">Colaboración UNAM · Web</span></p>
+          <h3><span class="en">SIA website support</span><span class="es">Apoyo al sitio SIA</span></h3>
+          <p class="desc en">Support for the SIA website of UNAM's Institute of Cellular Physiology (IFC). I'm listed in the site's acknowledgments.</p>
+          <p class="desc es">Apoyo al sitio web SIA del Instituto de Fisiología Celular (IFC) de la UNAM. Aparezco en los agradecimientos del sitio.</p>
+          <div class="chips"><span>Web</span><span>UNAM</span></div>
+          <div class="links"><a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit site ↗</span><span class="es">Ver sitio ↗</span></a></div>
+        </div>
+      </article>
+
+      <article class="card reveal" id="p-festival">
+        <div class="thumb"><img src="img/festival.png" data-alt-en="Festival de las Luciérnagas — interactive map" data-alt-es="Festival de las Luciérnagas — mapa interactivo" alt="Festival de las Luciérnagas — interactive map" loading="lazy"></div>
+        <div class="card-body">
+          <p class="tag"><span class="en">Team project · Scrum Master</span><span class="es">Proyecto en equipo · Scrum Master</span></p>
           <h3>Festival de las Luciérnagas</h3>
-          <p class="desc">Full-stack web platform for managing cabin and campsite reservations for an event, with an interactive map and an admin dashboard. Built by a 5-person team; my role was Scrum Master and developer. Includes OWASP security practices, automated emails, and agile methodologies.</p>
-          <div class="stack">
-            <span>Python</span><span>Django</span><span>SQLite</span><span>Leaflet</span><span>HTML</span><span>CSS</span>
-          </div>
-          <div class="card-links">
-            <a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener">View code ↗</a>
-            <!-- When you deploy the demo, update the href and remove the "muted" class -->
-            <a class="muted" href="#" target="_blank" rel="noopener">Demo (coming soon)</a>
-          </div>
+          <p class="desc en">Full-stack reservation platform for cabins and campsites with an interactive map and admin dashboard. 5-person team, OWASP practices and automated emails.</p>
+          <p class="desc es">Plataforma full-stack de reservas de cabañas y campamentos con mapa interactivo y panel de administración. Equipo de 5 personas, prácticas OWASP y correos automáticos.</p>
+          <div class="chips"><span>Django</span><span>PostgreSQL</span><span>Leaflet</span></div>
+          <div class="links"><a href="https://github.com/AxoltDash/ingsofware-p1" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
       </article>
 
-      <!-- ===== Ollama ===== -->
-      <article class="card reveal">
-        <div class="shot shot-contain">
-          <img src="img/ollama.png" alt="Agente de IA Local — interfaz de chat">
-        </div>
+      <article class="card reveal" id="p-ai">
+        <div class="thumb contain"><img src="img/ollama.png" data-alt-en="Local AI agent — chat interface" data-alt-es="Agente de IA local — interfaz de chat" alt="Local AI agent — chat interface" loading="lazy"></div>
         <div class="card-body">
-          <p class="card-tag">Personal project</p>
-          <h3>Local AI Agent</h3>
-          <p class="desc">AI assistant that runs 100% locally (no internet or paid APIs) and automates tasks from natural language via function calling: creates projects, notes, and calendar events. Includes a chat interface, voice input/output, vision, and data analysis. Secure by design — it only writes inside its own working folder.</p>
-          <div class="stack"><span>Ollama</span><span>Qwen 2.5</span><span>Python</span><span>Vosk</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener">View code ↗</a>
-          </div>
+          <p class="tag"><span class="en">Personal project · Local AI</span><span class="es">Proyecto personal · IA local</span></p>
+          <h3><span class="en">Local AI Agent</span><span class="es">Agente de IA local</span></h3>
+          <p class="desc en">Assistant that runs 100% locally and automates tasks from natural language: projects, notes and calendar events, with voice and vision. 10 open models benchmarked.</p>
+          <p class="desc es">Asistente que corre 100 % en local y automatiza tareas con lenguaje natural: proyectos, notas y eventos de calendario, con voz y visión. 10 modelos abiertos comparados.</p>
+          <div class="chips"><span>Ollama</span><span>Python</span><span>Vosk</span></div>
+          <div class="links"><a href="https://github.com/Aaronlm25/Proyecto-Agente-IA" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
       </article>
 
-      <!-- ===== MPI: Parallel Matrix Multiplication ===== -->
-      <article class="card reveal">
-        <div class="shot">
-          <span>Add your speedup chart<br>img/matmul.png</span>
-          <!-- Generate this image with the repo's scripts/plot_results.py and place it here:
-               img src="img/matmul.png" alt="Speedup chart — parallel matrix multiplication"> -->
-        </div>
+      <article class="card reveal" id="p-mpi">
+        <div class="thumb"><div class="ph"><b>MPI · 6.8x</b></div></div>
         <div class="card-body">
-          <p class="card-tag">Personal project · Parallel computing</p>
-          <h3>Parallel Matrix Multiplication</h3>
-          <p class="desc">Dense matrix multiplication parallelized with MPI in C, using row-wise block distribution (Scatterv/Bcast/Gatherv) that supports sizes not evenly divisible across processes. Includes automatic correctness verification against the sequential version and a benchmarking script that measures speedup and parallel efficiency.</p>
-          <div class="stack"><span>C</span><span>MPI</span><span>Bash</span><span>Python</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25/parallel-matmul-mpi" target="_blank" rel="noopener">View code ↗</a>
-          </div>
+          <p class="tag"><span class="en">Parallel computing</span><span class="es">Cómputo paralelo</span></p>
+          <h3><span class="en">Parallel Matrix Multiplication</span><span class="es">Multiplicación de matrices en paralelo</span></h3>
+          <p class="desc en">Matrix multiplication with MPI in C: 6.8x speedup on 8 processes (85% efficiency), automatic correctness checks and benchmarking scripts.</p>
+          <p class="desc es">Multiplicación de matrices con MPI en C: 6.8 veces más rápida con 8 procesos (85 % de eficiencia), verificación automática y scripts de medición.</p>
+          <div class="chips"><span>C</span><span>MPI</span><span>Python</span></div>
+          <div class="links"><a href="https://github.com/Aaronlm25/parallel-matmul-mpi" target="_blank" rel="noopener"><span class="en">View code ↗</span><span class="es">Ver código ↗</span></a></div>
         </div>
       </article>
 
-      <!-- ===== Notes board ===== -->
-      <article class="card reveal">
-        <div class="shot shot-wide">
-          <img src="img/notas.png" alt="Trello Notes — tablero de notas">
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Personal project</p>
-          <h3>Trello Notes — Kanban Board</h3>
-          <p class="desc">Kanban-style note board: organize cards into lists, drag and drop to reorder them, search, colors, and themes. Auto-saves to the browser (localStorage). Built with vanilla JavaScript, organized into modules.</p>
-          <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Bloc-Notas" target="_blank" rel="noopener">View code ↗</a>
-            <a href="https://aaronlm25.github.io/Proyecto-Bloc-Notas/main/" target="_blank" rel="noopener">View demo ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- ===== Académico: Base de datos ===== -->
-      <article class="card reveal">
-        <div class="shot">
-          <span>Add your screenshot<br>img/db.png</span>
-          <img src="img/db.png" alt="Event management system">
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Academic project</p>
-          <h3>Event Management (Database)</h3>
-          <p class="desc">Relational model in PostgreSQL with referential integrity via primary/foreign keys, complex SQL queries, and triggers to automate database behavior.</p>
-          <div class="stack"><span>PostgreSQL</span><span>SQL</span><span>Docker</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-Torneo-Pokemon" target="_blank" rel="noopener">View code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- ===== Académico: Clima APIs ===== -->
-      <article class="card reveal">
-        <div class="shot shot-wide">
-          <img src="img/clima.png" alt="App de clima con APIs">
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Academic project</p>
-          <h3>Weather App with APIs</h3>
-          <p class="desc">Flask web app that looks up weather by city, IATA code, or flight number using the OpenWeather API. Includes search auto-correction, autocomplete, and a JSON cache to reduce API calls.</p>
-          <div class="stack"><span>Python</span><span>Flask</span><span>OpenWeather API</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25/Proyecto-App-Clima" target="_blank" rel="noopener">View code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- ===== Académico: Shamir ===== -->
-      <article class="card reveal">
-        <div class="shot">
-          <span>Add your screenshot<br>img/shamir.png</span>
-          <!-- <img src="img/shamir.png" alt="Shamir's Secret Sharing"> -->
-        </div>
-        <div class="card-body">
-          <p class="card-tag">Academic project · Cryptography</p>
-          <h3>Shamir's Secret Sharing</h3>
-          <p class="desc">Implementation of Shamir's Secret Sharing scheme to protect text files, splitting a key into shares that can only be recovered above a minimum threshold.</p>
-          <div class="stack"><span>Python</span><span>cryptography</span></div>
-          <div class="card-links">
-            <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">View code ↗</a>
-          </div>
-        </div>
-      </article>
+      <a class="card more reveal" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">
+        <p class="tag"><span class="en">And more</span><span class="es">Y más</span></p>
+        <h3><span class="en">See everything on GitHub</span><span class="es">Ver todo en GitHub</span></h3>
+        <p class="en">Event management database, Kanban notes board, weather app with APIs and Shamir's Secret Sharing.</p>
+        <p class="es">Base de datos de eventos, tablero de notas Kanban, app del clima con APIs y el esquema de Shamir.</p>
+      </a>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- =================== HABILIDADES =================== -->
-<section id="skills">
-  <div class="wrap">
+  <!-- ================= 5. JOURNEY ================= -->
+  <section id="journey">
     <div class="sec-head reveal">
-      <p class="eyebrow">// Skills</p>
-      <h2>What I work with</h2>
+      <h2><span class="en">My journey</span><span class="es">Mi trayectoria</span></h2>
+      <p><span class="en">Important milestones, from the most recent to the oldest.</span><span class="es">Momentos importantes, del más reciente al más antiguo.</span></p>
     </div>
-    <div class="skills">
-      <div class="skill-row reveal"><h4>Languages</h4><p>C, C++, Python, Java, Racket, Kotlin, JavaScript, Assembly</p></div>
-      <div class="skill-row reveal"><h4>Web</h4><p>HTML, CSS, Django, Leaflet</p></div>
-      <div class="skill-row reveal"><h4>Databases</h4><p>SQL, PostgreSQL, SQLite</p></div>
-      <div class="skill-row reveal"><h4>Security & networking</h4><p>OWASP, encryption, role-based access control, VPNs, APIs, Cisco (basic)</p></div>
-      <div class="skill-row reveal"><h4>Local AI</h4><p>Ollama, cross-platform model management</p></div>
-      <div class="skill-row reveal"><h4>Tools</h4><p>Git, Docker, Linux</p></div>
+
+    <div class="stats reveal">
+      <div class="stat"><b data-count="9.25" data-dec="2">9.25</b><span><span class="en">GPA out of 10</span><span class="es">Promedio de 10</span></span></div>
+      <div class="stat"><b data-count="11">11</b><span><span class="en">Projects</span><span class="es">Proyectos</span></span></div>
+      <div class="stat"><b data-count="2">2</b><span><span class="en">UNAM collaborations</span><span class="es">Colaboraciones UNAM</span></span></div>
+      <div class="stat"><b data-count="5">5</b><span><span class="en">People led as Scrum Master</span><span class="es">Personas a mi cargo como Scrum Master</span></span></div>
     </div>
+
+    <div class="filters" role="group" aria-label="Filter">
+      <button type="button" data-filter="all" aria-pressed="true"><span class="en">All</span><span class="es">Todo</span></button>
+      <button type="button" data-filter="project" aria-pressed="false"><span class="en">Projects</span><span class="es">Proyectos</span></button>
+      <button type="button" data-filter="unam" aria-pressed="false"><span class="en">UNAM collaborations</span><span class="es">Colaboraciones UNAM</span></button>
+      <button type="button" data-filter="competition" aria-pressed="false"><span class="en">Competitions</span><span class="es">Competencias</span></button>
+      <button type="button" data-filter="education" aria-pressed="false"><span class="en">Education</span><span class="es">Estudios</span></button>
+    </div>
+
+    <ol class="tl">
+      <li class="tl-item" data-cat="education">
+        <span class="tl-year">2027</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2027</span>
+          <p class="tag"><span class="en">Education</span><span class="es">Estudios</span></p>
+          <h3><span class="en">B.Sc. in Computer Science — UNAM (expected)</span><span class="es">Lic. en Ciencias de la Computación — UNAM (egreso)</span></h3>
+          <p><span class="en">June 2027 · GPA 9.25/10 · Databases, Distributed Computing, Security</span><span class="es">Junio de 2027 · Promedio 9.25/10 · Bases de datos, cómputo distribuido, seguridad</span></p></div>
+      </li>
+      <li class="tl-item" data-cat="competition">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">Competition</span><span class="es">Competencia</span></p>
+          <h3><span class="en">ICPC 2026 — Regional contest</span><span class="es">ICPC 2026 — Etapa regional</span></h3>
+          <p><span class="en">Team Kernel Panic · finished in 300th place</span><span class="es">Equipo Kernel Panic · lugar 300</span></p></div>
+      </li>
+      <li class="tl-item" data-cat="unam">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">UNAM collaboration · PAPIME</span><span class="es">Colaboración UNAM · PAPIME</span></p>
+          <h3><span class="en">Digital learning environment for Gender and Ethics</span><span class="es">Ambiente digital de aprendizaje de Género y Ética</span></h3>
+          <p><span class="en">PAPIME 2026 · Faculty of Sciences · platform setup and development, digital resources</span><span class="es">PAPIME 2026 · Facultad de Ciencias · configuración y desarrollo de la plataforma, recursos digitales</span></p></div>
+      </li>
+      <li class="tl-item" data-cat="unam">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">UNAM collaboration · Web</span><span class="es">Colaboración UNAM · Web</span></p>
+          <h3><span class="en">SIA website — Institute of Cellular Physiology</span><span class="es">Sitio SIA — Instituto de Fisiología Celular</span></h3>
+          <p><span class="en">Listed in the acknowledgments of </span><span class="es">Aparezco en los agradecimientos de </span><a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener">sia.ifc.unam.mx</a></p></div>
+      </li>
+      <li class="tl-item" data-cat="project">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">Project</span><span class="es">Proyecto</span></p>
+          <h3><span class="en">Syntax — English-learning app for Android</span><span class="es">Syntax — app para aprender inglés en Android</span></h3>
+          <p><span class="en">React Native, Expo and Kotlin · book-based paths, AI-checked exercises, exam practice</span><span class="es">React Native, Expo y Kotlin · rutas por libro, ejercicios revisados con IA, práctica de exámenes</span></p></div>
+      </li>
+      <li class="tl-item" data-cat="project">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">Project · AI</span><span class="es">Proyecto · IA</span></p>
+          <h3><span class="en">My own language model, built from scratch</span><span class="es">Mi propio modelo de lenguaje, desde cero</span></h3>
+          <p><span class="en">GPT trained on CPU · offline English corrector in progress</span><span class="es">GPT entrenado en CPU · corrector de inglés sin internet en desarrollo</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="project">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">Project · Leadership</span><span class="es">Proyecto · Liderazgo</span></p>
+          <h3>Scrum Master — Festival de las Luciérnagas</h3>
+          <p><span class="en">5-person team · Django, PostgreSQL, Leaflet · Scrum, Kanban and XP</span><span class="es">Equipo de 5 personas · Django, PostgreSQL, Leaflet · Scrum, Kanban y XP</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="project">
+        <span class="tl-year">2026</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2026</span>
+          <p class="tag"><span class="en">Project · Local AI</span><span class="es">Proyecto · IA local</span></p>
+          <h3><span class="en">Local AI home lab</span><span class="es">Laboratorio casero de IA local</span></h3>
+          <p><span class="en">10 open models deployed and benchmarked on Windows, Linux and macOS</span><span class="es">10 modelos abiertos instalados y comparados en Windows, Linux y macOS</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="project">
+        <span class="tl-year">2025</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2025</span>
+          <p class="tag"><span class="en">Project · Parallel computing</span><span class="es">Proyecto · Cómputo paralelo</span></p>
+          <h3><span class="en">Parallel matrix multiplication with MPI</span><span class="es">Multiplicación de matrices en paralelo con MPI</span></h3>
+          <p><span class="en">6.8x speedup on 8 processes (85% parallel efficiency)</span><span class="es">6.8 veces más rápida con 8 procesos (85 % de eficiencia)</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="project">
+        <span class="tl-year">2025</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2025</span>
+          <p class="tag"><span class="en">Project · Databases</span><span class="es">Proyecto · Bases de datos</span></p>
+          <h3><span class="en">Event management database</span><span class="es">Base de datos de gestión de eventos</span></h3>
+          <p><span class="en">32-table PostgreSQL model · 25+ queries · triggers</span><span class="es">Modelo de 32 tablas en PostgreSQL · más de 25 consultas · triggers</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="project">
+        <span class="tl-year">2025</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2025</span>
+          <p class="tag"><span class="en">Project · Cryptography</span><span class="es">Proyecto · Criptografía</span></p>
+          <h3><span class="en">Shamir's Secret Sharing</span><span class="es">Esquema de secreto compartido de Shamir</span></h3>
+          <p><span class="en">Protecting files by splitting a key into shares</span><span class="es">Protección de archivos repartiendo una llave en partes</span></p></div>
+      </li>
+      <li class="tl-item extra" data-cat="education">
+        <span class="tl-year">2023</span><span class="tl-rail"></span>
+        <div class="tl-card"><span class="year-in">2023</span>
+          <p class="tag"><span class="en">Education</span><span class="es">Estudios</span></p>
+          <h3><span class="en">Started the B.Sc. in Computer Science at UNAM</span><span class="es">Inicio de la Lic. en Ciencias de la Computación en la UNAM</span></h3>
+          <p><span class="en">Faculty of Sciences · Mexico City</span><span class="es">Facultad de Ciencias · Ciudad de México</span></p></div>
+      </li>
+    </ol>
+    <button class="btn btn-ghost btn-wide" type="button" id="more-journey" aria-expanded="false"></button>
+  </section>
+
+</div>
+
+<!-- ================= 6. NEWS ================= -->
+<section class="news" id="news" aria-roledescription="carousel" aria-label="News">
+  <div class="wrap">
+    <div class="news-head">
+      <div>
+        <h2><span class="en">News &amp; activities</span><span class="es">Noticias y actividades</span></h2>
+        <p><span class="en">What I've been up to. They change every 8 seconds.</span><span class="es">Lo que he estado haciendo. Cambian solas cada 8 segundos.</span></p>
+      </div>
+      <div class="controls">
+        <button class="pause" type="button">
+          <span class="pause-ico" aria-hidden="true"><i></i><i></i></span><span class="play-ico" aria-hidden="true"></span>
+          <span class="pause-txt"></span>
+        </button>
+        <button class="prev" type="button" data-aria-en="Previous news" data-aria-es="Noticia anterior">←</button>
+        <button class="next" type="button" data-aria-en="Next news" data-aria-es="Noticia siguiente">→</button>
+      </div>
+    </div>
+    <div class="viewport">
+      <div class="track" aria-live="off">
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><div class="ph"><b>ICPC 2026</b></div></div>
+          <div class="body"><p class="tag"><span class="en">Competition · 2026</span><span class="es">Competencia · 2026</span></p>
+            <h3><span class="en">ICPC 2026 regional with team Kernel Panic</span><span class="es">Regional del ICPC 2026 con el equipo Kernel Panic</span></h3>
+            <p><span class="en">Competed in the regional round of the International Collegiate Programming Contest and finished 300th.</span><span class="es">Participé en la etapa regional del Concurso Internacional de Programación Universitaria y quedamos en el lugar 300.</span></p>
+            <a href="#journey"><span class="en">See my journey →</span><span class="es">Ver mi trayectoria →</span></a></div>
+        </article>
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><div class="ph"><b>PAPIME 2026</b></div></div>
+          <div class="body"><p class="tag"><span class="en">UNAM collaboration · 2026</span><span class="es">Colaboración UNAM · 2026</span></p>
+            <h3><span class="en">Joining a PAPIME project at the Faculty of Sciences</span><span class="es">Me uno a un proyecto PAPIME en la Facultad de Ciencias</span></h3>
+            <p><span class="en">Building a digital learning environment for the Gender and Ethics course of the Biology program.</span><span class="es">Desarrollamos un ambiente digital de aprendizaje para la asignatura de Género y Ética de Biología.</span></p>
+            <a href="#p-papime"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
+        </article>
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><div class="ph"><b>SIA · IFC UNAM</b></div></div>
+          <div class="body"><p class="tag"><span class="en">Recognition · 2026</span><span class="es">Reconocimiento · 2026</span></p>
+            <h3><span class="en">Acknowledged on the SIA website</span><span class="es">Reconocido en el sitio SIA</span></h3>
+            <p><span class="en">I supported the SIA website of UNAM's Institute of Cellular Physiology and appear in its acknowledgments.</span><span class="es">Apoyé el sitio SIA del Instituto de Fisiología Celular de la UNAM y aparezco en sus agradecimientos.</span></p>
+            <a href="https://sia.ifc.unam.mx" target="_blank" rel="noopener"><span class="en">Visit the site ↗</span><span class="es">Ver el sitio ↗</span></a></div>
+        </article>
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><div class="ph"><b>Syntax</b></div></div>
+          <div class="body"><p class="tag"><span class="en">New project · 2026</span><span class="es">Nuevo proyecto · 2026</span></p>
+            <h3><span class="en">Building Syntax, my English-learning app</span><span class="es">Desarrollo Syntax, mi app para aprender inglés</span></h3>
+            <p><span class="en">An Android app with book-based grammar paths, AI-checked writing and exam practice.</span><span class="es">Una app de Android con rutas de gramática por libro, escritura revisada con IA y práctica de exámenes.</span></p>
+            <a href="#p-syntax"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
+        </article>
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><div class="ph"><b>LLM</b></div></div>
+          <div class="body"><p class="tag"><span class="en">AI · 2026</span><span class="es">IA · 2026</span></p>
+            <h3><span class="en">Training my own language model</span><span class="es">Entreno mi propio modelo de lenguaje</span></h3>
+            <p><span class="en">From a GPT built from scratch to an English corrector that works without internet.</span><span class="es">De un GPT hecho desde cero a un corrector de inglés que funciona sin internet.</span></p>
+            <a href="#p-llm"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
+        </article>
+        <article class="news-card" aria-roledescription="slide">
+          <div class="thumb"><img src="img/festival.png" alt="" loading="lazy"></div>
+          <div class="body"><p class="tag"><span class="en">Team · 2026</span><span class="es">Equipo · 2026</span></p>
+            <h3><span class="en">Scrum Master for Festival de las Luciérnagas</span><span class="es">Scrum Master del Festival de las Luciérnagas</span></h3>
+            <p><span class="en">Led weekly sprints for a 5-person team building a full-stack reservation platform.</span><span class="es">Coordiné los sprints semanales de un equipo de 5 personas que hizo una plataforma de reservas.</span></p>
+            <a href="#p-festival"><span class="en">See the project →</span><span class="es">Ver el proyecto →</span></a></div>
+        </article>
+      </div>
+    </div>
+    <div class="dots" role="group"></div>
   </div>
 </section>
 
-<!-- =================== CONTACTO =================== -->
-<section id="contact">
-  <div class="wrap contact-inner reveal">
-    <p class="eyebrow">// Contact</p>
-    <h2>Let's talk</h2>
-    <p>Have an opportunity or want to see more of my work? Get in touch.</p>
-    <div class="hero-actions">
-      <a class="btn btn-solid" href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a>
-      <a class="btn btn-ghost" href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub</a>
-      <!-- Add your LinkedIn once you have it:
-      <a class="btn btn-ghost" href="https://linkedin.com/in/YOUR-USERNAME" target="_blank" rel="noopener">LinkedIn</a> -->
-    </div>
-  </div>
-</section>
+</main>
 
-<footer>
-  <div class="wrap foot-inner">
-    <span>Aaron López Mendoza</span>
-    <span>Mexico City · <span id="year"></span></span>
+<!-- ================= 7. FOOTER ================= -->
+<footer id="contact">
+  <div class="wrap foot">
+    <a class="brand" href="#top">Aaron López</a>
+    <div class="foot-help">
+      <b><span class="en">Let's talk</span><span class="es">Hablemos</span></b>
+      <a href="mailto:alopez250405@gmail.com">alopez250405@gmail.com</a>
+      <p><span class="en">Mexico City</span><span class="es">Ciudad de México</span></p>
+    </div>
+    <div class="foot-links">
+      <a href="https://github.com/Aaronlm25" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/aaron-lopez-mendoza-7349103a6" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="cv.pdf" target="_blank" rel="noopener"><span class="en">Download my CV</span><span class="es">Descargar mi CV</span></a>
+    </div>
   </div>
 </footer>
 
 <script>
-  // dynamic year
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.documentElement.classList.add('js');
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
 
-  // reveal on scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  /* ---- texts that JavaScript writes ---- */
+  const T = {
+    en: { title: 'Aaron López Mendoza — Portfolio', pause: 'Pause', play: 'Play',
+          pauseL: 'Pause news', playL: 'Play news', more: 'See my full journey', less: 'Show less',
+          dot: 'News', dots: 'Choose news', news: 'News and activities',
+          desc: 'Aaron López Mendoza — Computer Science student at UNAM. Full-stack software, databases and local AI.' },
+    es: { title: 'Aaron López Mendoza — Portafolio', pause: 'Pausar', play: 'Reanudar',
+          pauseL: 'Pausar noticias', playL: 'Reanudar noticias', more: 'Ver toda mi trayectoria', less: 'Ver menos',
+          dot: 'Noticia', dots: 'Elegir noticia', news: 'Noticias y actividades',
+          desc: 'Aaron López Mendoza — Estudiante de Ciencias de la Computación en la UNAM. Software full-stack, bases de datos e IA local.' }
+  };
+  let lang = store.get('lang') || ((navigator.language || 'en').toLowerCase().startsWith('es') ? 'es' : 'en');
+  let refreshers = [];
+  function setLang(l) {
+    lang = l;
+    const h = document.documentElement;
+    h.lang = l; h.dataset.lang = l;
+    document.title = T[l].title;
+    document.querySelector('meta[name="description"]').content = T[l].desc;
+    document.querySelectorAll('[data-setlang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.setlang === l));
+    document.querySelectorAll('[data-aria-' + l + ']').forEach(el => el.setAttribute('aria-label', el.dataset['aria' + (l === 'en' ? 'En' : 'Es')]));
+    document.querySelectorAll('[data-alt-' + l + ']').forEach(el => el.alt = el.dataset['alt' + (l === 'en' ? 'En' : 'Es')]);
+    refreshers.forEach(f => f());
+  }
+  document.querySelectorAll('[data-setlang]').forEach(b => b.addEventListener('click', () => {
+    store.set('lang', b.dataset.setlang); setLang(b.dataset.setlang);
+  }));
+
+  /* ---- A− / A+ text size (remembered on this device) ---- */
+  const base = () => (innerWidth < 768 ? 16 : 17);
+  let step = parseInt(store.get('fontStep') || '0', 10) || 0;
+  const applyFont = () => { document.documentElement.style.fontSize = (base() + step) + 'px'; };
+  document.querySelectorAll('[data-font]').forEach(b => b.addEventListener('click', () => {
+    step = Math.max(-2, Math.min(4, step + parseInt(b.dataset.font, 10)));
+    store.set('fontStep', step);
+    applyFont();
+    requestAnimationFrame(() => go(idx));
+  }));
+  if (step) applyFont();
+
+  /* ---- menu (tablet and phone) ---- */
+  const mb = document.querySelector('.menu-btn'), mp = document.getElementById('menu');
+  mb.addEventListener('click', () => {
+    const open = mp.classList.toggle('open');
+    mb.setAttribute('aria-expanded', open);
+  });
+  mp.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mp.classList.remove('open'); mb.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ---- reveal + count-up ---- */
+  function countUp(el) {
+    if (reduce) return;
+    const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0), suf = el.dataset.suffix || '';
+    const t0 = performance.now(), dur = 1200;
+    const tick = t => {
+      const p = Math.min((t - t0) / dur, 1), v = end * (1 - Math.pow(1 - p, 3));
+      el.textContent = v.toFixed(dec) + suf;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    e.target.querySelectorAll('[data-count]').forEach(countUp);
+    io.unobserve(e.target);
+  }), { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ---- journey: filters + "see all" ---- */
+  const items = [...document.querySelectorAll('.tl-item')];
+  const moreBtn = document.getElementById('more-journey');
+  let filter = 'all', expanded = false;
+  function renderJourney() {
+    const visible = [];
+    items.forEach(li => {
+      const show = filter === 'all' ? (expanded || !li.classList.contains('extra')) : li.dataset.cat === filter;
+      li.hidden = !show;
+      li.classList.remove('last');
+      if (show) visible.push(li);
+    });
+    if (visible.length) visible[visible.length - 1].classList.add('last');
+    moreBtn.hidden = filter !== 'all';
+    moreBtn.textContent = expanded ? T[lang].less : T[lang].more;
+    moreBtn.setAttribute('aria-expanded', expanded);
+  }
+  document.querySelectorAll('[data-filter]').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.filter;
+    document.querySelectorAll('[data-filter]').forEach(x => x.setAttribute('aria-pressed', x === b));
+    renderJourney();
+  }));
+  moreBtn.addEventListener('click', () => { expanded = !expanded; renderJourney(); });
+  refreshers.push(renderJourney);
+
+  /* ---- news carousel: slow, pausable, stops on hover/focus ---- */
+  const news = document.getElementById('news');
+  const track = news.querySelector('.track'), cards = [...track.children];
+  const dotsBox = news.querySelector('.dots'), pauseBtn = news.querySelector('.pause');
+  const perView = () => (innerWidth < 768 ? 1 : innerWidth < 1024 ? 2 : 3);
+  const maxIdx = () => Math.max(0, cards.length - perView());
+  let idx = 0, userPaused = reduce, hover = false, timer = null;
+  function buildDots() {
+    dotsBox.innerHTML = '';
+    for (let i = 0; i <= maxIdx(); i++) {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.addEventListener('click', () => { go(i); schedule(); });
+      dotsBox.appendChild(d);
+    }
+    labelCarousel();
+  }
+  function labelCarousel() {
+    [...dotsBox.children].forEach((d, i) => d.setAttribute('aria-label', T[lang].dot + ' ' + (i + 1)));
+    dotsBox.setAttribute('aria-label', T[lang].dots);
+    news.setAttribute('aria-label', T[lang].news);
+    pauseBtn.querySelector('.pause-txt').textContent = userPaused ? T[lang].play : T[lang].pause;
+    pauseBtn.setAttribute('aria-label', userPaused ? T[lang].playL : T[lang].pauseL);
+  }
+  function go(i) {
+    const m = maxIdx();
+    idx = i > m ? 0 : i < 0 ? m : i;
+    track.style.transform = `translateX(${-(cards[idx].offsetLeft - cards[0].offsetLeft)}px)`;
+    [...dotsBox.children].forEach((d, k) => d.setAttribute('aria-current', k === idx));
+  }
+  function schedule() {
+    clearInterval(timer);
+    track.setAttribute('aria-live', userPaused ? 'polite' : 'off');
+    if (!userPaused && !hover) timer = setInterval(() => go(idx + 1), 8000);
+  }
+  function setPaused(p) {
+    userPaused = p;
+    pauseBtn.classList.toggle('paused', p);
+    labelCarousel();
+    schedule();
+  }
+  pauseBtn.addEventListener('click', () => setPaused(!userPaused));
+  news.querySelector('.prev').addEventListener('click', () => { go(idx - 1); schedule(); });
+  news.querySelector('.next').addEventListener('click', () => { go(idx + 1); schedule(); });
+  news.addEventListener('mouseenter', () => { hover = true; schedule(); });
+  news.addEventListener('mouseleave', () => { hover = false; schedule(); });
+  news.addEventListener('focusin', () => { hover = true; schedule(); });
+  news.addEventListener('focusout', () => { hover = false; schedule(); });
+  refreshers.push(labelCarousel);
+  let lastPer = perView();
+  addEventListener('resize', () => {
+    if (perView() !== lastPer) { lastPer = perView(); buildDots(); }
+    if (step) applyFont();
+    go(Math.min(idx, maxIdx()));
+  });
+
+  setLang(lang);
+  buildDots(); go(0); setPaused(userPaused);
+})();
 </script>
-
 </body>
 </html>
