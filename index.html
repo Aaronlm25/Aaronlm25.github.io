@@ -213,7 +213,7 @@
   .skill:nth-child(3n) .chips > span:hover{background:var(--teal);color:#fff}
 
   /* ---------- 5. journey ---------- */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap);margin-bottom:32px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-bottom:32px}
   .stat{border-radius:var(--radius);padding:18px 24px 20px;background:var(--grad-soft);border:1px solid #DBE3FF}
   .stat b{display:block;font-size:2.35rem;line-height:1.15;letter-spacing:-.02em;
     background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -270,6 +270,7 @@
     .projects{grid-template-columns:repeat(2,1fr)}
     .skills{grid-template-columns:repeat(2,1fr)}
     .stats{grid-template-columns:repeat(2,1fr)}
+    .stats .stat:last-child:nth-child(odd){grid-column:1 / -1}
     .tl-item{grid-template-columns:100px var(--gap) 1fr}
     .foot .brand{grid-column:1 / -1}
     .foot-help{grid-column:1 / 7}
